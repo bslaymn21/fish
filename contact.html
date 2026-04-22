@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MATAMKU | Contact Us</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="./js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    
+    <!-- Translation & Theme System -->
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
+    <script src="./js/theme-manager.js"></script>
+    <script src="./js/preloader.js"></script>
+</head>
+<body class="font-body-md text-on-surface dark:bg-slate-950 dark:text-slate-200 antialiased transition-colors">
+    <!-- TopAppBar -->
+    <header class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
+        <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
+            <div class="flex items-center gap-4">
+                <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1" data-i18n="brand_name">MATAMKOM</span>
+            </div>
+            <nav class="hidden md:flex gap-md">
+                <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200" href="index.html" data-i18n="nav_home">Home</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200" href="menu.html" data-i18n="nav_menu">Menu</a>
+                <a class="text-primary dark:text-abyss-primary font-bold font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200" href="contact.html" data-i18n="nav_contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLanguage()" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant" title="Change Language">
+                    <span class="material-symbols-outlined">translate</span>
+                </button>
+                <button id="theme-toggle" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant" data-i18n-title="theme_toggle_dark">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-xl">
+        <!-- Hero -->
+        <div class="mb-xl text-center">
+            <h1 class="font-h1 text-headline-lg text-primary dark:text-white mb-base" data-i18n="contact_title">Contact Us</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant dark:text-abyss-on-variant max-w-2xl mx-auto" data-i18n="contact_subtitle">We'd love to hear from you. Reach out through any of the channels below.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+            <!-- Social Card -->
+            <div class="bg-white dark:bg-abyss-container p-8 border border-slate-200 dark:border-white/10 rounded-xl shadow-sm text-center space-y-6 transition-colors">
+                <div class="w-16 h-16 bg-blue-50 dark:bg-abyss-primary/10 text-blue-600 dark:text-abyss-primary rounded-full flex items-center justify-center mx-auto">
+                    <span class="material-symbols-outlined text-3xl">share</span>
+                </div>
+                <h3 class="font-h3 text-headline-md text-primary dark:text-white" data-i18n="contact_socials">Follow Our Journey</h3>
+                <div class="flex flex-col gap-3">
+                    <a href="#" class="flex items-center justify-center gap-3 p-3 bg-slate-50 dark:bg-abyss-surface rounded-xl hover:bg-blue-50 dark:hover:bg-abyss-primary/20 transition-colors group">
+                        <span class="font-bold text-slate-700 dark:text-abyss-on-variant group-hover:text-blue-600 dark:group-hover:text-abyss-primary" data-i18n="contact_social_insta">Instagram</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-center gap-3 p-3 bg-slate-50 dark:bg-abyss-surface rounded-xl hover:bg-blue-50 dark:hover:bg-abyss-primary/20 transition-colors group">
+                        <span class="font-bold text-slate-700 dark:text-abyss-on-variant group-hover:text-blue-600 dark:group-hover:text-abyss-primary" data-i18n="contact_social_fb">Facebook</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-center gap-3 p-3 bg-slate-50 dark:bg-abyss-surface rounded-xl hover:bg-blue-50 dark:hover:bg-abyss-primary/20 transition-colors group">
+                        <span class="font-bold text-slate-700 dark:text-abyss-on-variant group-hover:text-blue-600 dark:group-hover:text-abyss-primary" data-i18n="contact_social_x">Twitter (X)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Phone Card -->
+            <div class="bg-white dark:bg-abyss-container p-8 border border-slate-200 dark:border-white/10 rounded-xl shadow-sm text-center space-y-6 transition-colors">
+                <div class="w-16 h-16 bg-green-50 dark:bg-green-900/10 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto">
+                    <span class="material-symbols-outlined text-3xl">call</span>
+                </div>
+                <h3 class="font-h3 text-headline-md text-primary dark:text-white" data-i18n="contact_phone">Let's Talk</h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 dark:bg-abyss-surface rounded-xl">
+                        <p class="text-xs font-bold text-slate-400 dark:text-abyss-outline uppercase tracking-widest mb-1" data-i18n="contact_phone_main">Main Line</p>
+                        <p class="text-xl font-bold dark:text-white">+1 (555) 123-4567</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 dark:bg-abyss-surface rounded-xl">
+                        <p class="text-xs font-bold text-slate-400 dark:text-abyss-outline uppercase tracking-widest mb-1" data-i18n="contact_phone_res">Reservations</p>
+                        <p class="text-xl font-bold dark:text-white">+1 (555) 765-4321</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hours Card -->
+            <div class="bg-white dark:bg-abyss-container p-8 border border-slate-200 dark:border-white/10 rounded-xl shadow-sm text-center space-y-6 transition-colors">
+                <div class="w-16 h-16 bg-orange-50 dark:bg-abyss-secondary/10 text-orange-600 dark:text-abyss-secondary rounded-full flex items-center justify-center mx-auto">
+                    <span class="material-symbols-outlined text-3xl">schedule</span>
+                </div>
+                <h3 class="font-h3 text-headline-md text-primary dark:text-white" data-i18n="contact_hours">Opening Hours</h3>
+                <div class="space-y-4 text-start">
+                    <div class="border-b border-slate-100 dark:border-white/5 pb-4">
+                        <p class="font-bold text-slate-700 dark:text-abyss-on-surface" data-i18n="contact_hours_weekdays">Monday - Thursday</p>
+                        <ul class="text-sm text-slate-500 dark:text-abyss-on-variant mt-2 space-y-1">
+                            <li data-i18n="contact_time_lunch">Lunch: 12:00 PM - 3:30 PM</li>
+                            <li data-i18n="contact_time_dinner">Dinner: 6:00 PM - 11:30 PM</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-bold text-slate-700 dark:text-abyss-on-surface" data-i18n="contact_hours_weekend">Friday - Sunday</p>
+                        <ul class="text-sm text-slate-500 dark:text-abyss-on-variant mt-2 space-y-1">
+                            <li data-i18n="contact_time_lunch">Lunch: 12:00 PM - 3:30 PM</li>
+                            <li data-i18n="contact_time_dinner">Dinner: 6:00 PM - 12:00 AM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address Section -->
+        <div class="bg-primary dark:bg-abyss-container rounded-xl p-xl flex flex-col md:flex-row items-center gap-xl transition-colors border border-outline-variant dark:border-white/10">
+            <div class="flex-grow space-y-lg text-center md:text-start">
+                <h2 class="font-h2 text-headline-lg text-white" data-i18n="contact_address">Visit Us</h2>
+                <div class="flex items-center gap-4 text-white/80 justify-center md:justify-start">
+                    <span class="material-symbols-outlined text-secondary dark:text-abyss-secondary">location_on</span>
+                    <p class="font-body-lg text-body-lg" data-i18n="contact_address_detail">123 Coastal Way, Harbor District, North Atlantic</p>
+                </div>
+                <button class="bg-secondary dark:bg-abyss-secondary px-8 py-3 text-white dark:text-abyss-on-secondary font-label-caps tracking-widest bioluminescent-glow transition-all">GET DIRECTIONS</button>
+            </div>
+            <div class="w-full md:w-1/2 aspect-video bg-slate-200 dark:bg-abyss-surface rounded-2xl overflow-hidden relative group">
+                <div class="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-60 transition-opacity">
+                   <span class="material-symbols-outlined text-6xl text-primary dark:text-abyss-primary">map</span>
+                </div>
+                <div class="absolute inset-x-0 bottom-0 p-4 bg-black/20 backdrop-blur-sm text-white text-xs text-center border-t border-white/10">
+                    Interactive Map Integration Placeholder
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 full-width py-12 transition-colors">
+        <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto text-center">
+            <span class="font-bold text-[#003366] dark:text-blue-100 font-h1 text-2xl tracking-widest" data-i18n="brand_name">MATAMKOM</span>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_sustainability">Sustainability</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_careers">Careers</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_privacy">Privacy</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_terms">Terms</a>
+            </div>
+            <p class="text-xs font-['Epilogue'] tracking-normal text-slate-400" data-i18n="footer_copy">© 2024 MATAMKOM. PRECISELY SOURCED.</p>
+        </div>
+    </footer>
+
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white dark:bg-slate-900 px-2 pb-safe border-t border-slate-200 dark:border-slate-800 z-50 h-16 transition-colors">
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="index.html">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_home">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-transform duration-150" href="menu.html">
+            <span class="material-symbols-outlined">restaurant_menu</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_menu">Menu</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-[#003366] dark:text-blue-300 border-t-2 border-[#003366] dark:border-blue-300 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="contact.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_contact">Contact</span>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            applyLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>

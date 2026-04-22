@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MATAMKOM | Fresh Catch of the Day</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Shared Configuration & Styles -->
+    <script src="./js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- Translation & Theme System -->
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
+    <script src="./js/theme-manager.js"></script>
+    <script src="./js/preloader.js"></script>
+</head>
+
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-white">
+    <!-- TopAppBar -->
+    <header
+        class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
+        <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
+            <div class="flex items-center gap-4">
+                <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1"
+                    data-i18n="brand_name">MATAMKOM</span>
+            </div>
+            <nav class="hidden md:flex gap-md">
+                <a class="text-primary dark:text-abyss-primary font-bold font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
+                    href="index.html" data-i18n="nav_home">Home</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
+                    href="menu.html" data-i18n="nav_menu">Menu</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
+                    href="contact.html" data-i18n="nav_contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLanguage()"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant"
+                    title="Change Language">
+                    <span class="material-symbols-outlined">translate</span>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant"
+                    data-i18n-title="theme_toggle_dark">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative w-full h-[520px] flex items-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img alt="Fresh fish platter" class="w-full h-full object-cover"
+                    data-alt="Premium fresh seafood platter with sea bass, lemons, and herbs on a bed of ice with dramatic natural light and professional food photography style"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6Xg4F3F4IM8_5OwILWXtE2KSHfEw1yslm76JyTixB7Bw-pzZWYFqz1EwMY43bnBxZkx3wiV3uB-SHZcIb6tC3zLMsyFrMnMisD-0FuXK2zdhnVsKme18xiyxhv6QSZSNYsq4qVGl2lHTcu0pxRc8n0mRSYN3wJYevp_io7Dh2wu0FhqQxUMxJhMz7q7BSNic6nOZ3lHpY2cpmQkPjNTaT4TF3BgsWvjj0xlCExwFVCkqtfIJMgKqBUbIqV8awpXGSi_M1sOHqcA" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-abyss-surface/90 via-abyss-surface/40 to-transparent">
+                </div>
+            </div>
+            <div class="relative z-10 container mx-auto px-6 md:px-xl">
+                <div class="max-w-2xl space-y-lg">
+                    <div
+                        class="inline-flex items-center gap-3 px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full shadow-lg">
+                        <span
+                            class="font-label-caps text-white text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold"
+                            data-i18n="hero_tagline">Locally Sourced Daily</span>
+                    </div>
+                    <h1 class="font-h1 text-h1 text-white leading-[1.0] lg:text-[72px]" data-i18n="hero_title">Fresh
+                        Catch <br />of the Day</h1>
+                    <p class="font-body-lg text-body-lg text-white/90 max-w-lg" data-i18n="hero_desc">From the morning
+                        tides to your evening table. Experience the purest flavors of the ocean, prepared with culinary
+                        precision.</p>
+                    <div class="flex flex-wrap gap-md pt-4">
+                        <a href="menu.html"
+                            class="bg-secondary text-white px-8 py-4 font-label-caps tracking-[0.2em] hover:scale-105 transition-transform inline-block shadow-lg"
+                            data-i18n="btn_order_now">ORDER NOW</a>
+                        <a href="reservation.html"
+                            class="border border-white text-white px-8 py-4 font-label-caps tracking-[0.2em] hover:bg-white/10 transition-colors inline-block"
+                            data-i18n="btn_book_table">BOOK A TABLE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signature Bento Grid -->
+        <section class="py-xl bg-white dark:bg-abyss-surface transition-colors">
+            <div class="container mx-auto px-6 md:px-xl">
+                <div class="text-center mb-xl">
+                    <h3 class="font-label-caps text-on-tertiary-container dark:text-abyss-primary opacity-80 mb-4"
+                        data-i18n="home_seasonal_favorites">SEASONAL FAVORITES</h3>
+                    <h2 class="font-h2 text-headline-lg text-primary dark:text-white" data-i18n="home_from_kitchen">From
+                        the Kitchen</h2>
+                </div>
+            </div> <!-- Close container after the info text -->
+            
+            <!-- Infinite Seafood Marquee (Full Width) -->
+            <div class="marquee-container">
+                    <div class="marquee-track">
+                        <!-- Set of 12 Unique Items -->
+                        <div class="marquee-item group">
+                            <img alt="Grilled Sea Bass" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Grilled Sea Bass</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="King Salmon" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">King Salmon</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Baked Barramundi" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Baked Barramundi</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Grilled Tilapia" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Grilled Tilapia</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Mediterranean Bream" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Mediterranean Bream</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Pan-Seared Trout" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Pan-Seared Trout</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Fried Red Snapper" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Fried Red Snapper</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group overflow-hidden">
+                            <img alt="Crispy Red Snapper" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Crispy Red Snapper</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Herb-Crusted Bass" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Herb-Crusted Bass</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Smoked Mackerel" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1501595091296-3aa970afb3ff?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Smoked Mackerel</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group overflow-hidden">
+                            <img alt="Steamed Cod Fillet" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Steamed Cod Fillet</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group overflow-hidden">
+                            <img alt="Grilled Seafood Platter" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Seafood Platter</h4>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Set for Continuous Loop -->
+                        <div class="marquee-item group">
+                            <img alt="Grilled Sea Bass" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Grilled Sea Bass</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="King Salmon" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">King Salmon</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Baked Barramundi" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Baked Barramundi</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Grilled Tilapia" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Grilled Tilapia</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Mediterranean Bream" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Mediterranean Bream</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Pan-Seared Trout" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Pan-Seared Trout</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Fried Red Snapper" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Fried Red Snapper</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group overflow-hidden">
+                            <img alt="Crispy Red Snapper" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Crispy Red Snapper</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Herb-Crusted Bass" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Herb-Crusted Bass</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group">
+                            <img alt="Smoked Mackerel" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1501595091296-3aa970afb3ff?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Smoked Mackerel</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group overflow-hidden">
+                            <img alt="Steamed Cod Fillet" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Steamed Cod Fillet</h4>
+                            </div>
+                        </div>
+                        <div class="marquee-item group overflow-hidden">
+                            <img alt="Grilled Seafood Platter" class="w-full h-full object-cover"
+                                src="https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&q=60&w=600" />
+                            <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
+                            <a href="https://wa.me/placeholder?text=Hello%20Matamkom!%20I%3Bld%20like%20to%20order%20this%20dish" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</a>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h4 class="text-white font-bold text-lg">Seafood Platter</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="py-xl bg-slate-50 dark:bg-slate-900 transition-colors">
+            <div class="container mx-auto px-6">
+                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl" data-i18n="why_title">Why Choose Matamkom?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                    <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="value-icon"><span class="material-symbols-outlined">set_meal</span></div>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_fresh_title">Daily Fresh</h3>
+                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_fresh_desc">Hand-picked seafood every morning.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="value-icon"><span class="material-symbols-outlined">restaurant</span></div>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_custom_title">Cooked Your Way</h3>
+                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_custom_desc">Grilled, Fried, or Singari.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="value-icon"><span class="material-symbols-outlined">delivery_dining</span></div>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_speed_title">Fast Delivery</h3>
+                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_speed_desc">Hot and fresh to your door.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conversion Banner -->
+        <section class="py-12 px-6">
+            <div class="conversion-banner shadow-2xl overflow-hidden relative">
+                <div class="relative z-10">
+                    <h2 class="text-4xl font-bold mb-4" data-i18n="menu_cta_title">تحب تاكل إيه النهارده؟</h2>
+                    <p class="text-xl mb-10 opacity-90" data-i18n="menu_cta_desc">تقدر تختار كل اللي نفسك فيه من المنيو بتاعنا دلوقتي</p>
+                    <a href="menu.html" class="bg-white text-primary px-10 py-5 rounded-full font-bold text-xl hover:scale-105 transition-transform inline-block shadow-xl">
+                        <span class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-2xl">restaurant_menu</span>
+                            <span data-i18n="btn_view_menu">تصفح المنيو واطلب الآن</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="py-xl bg-surface transition-colors">
+            <div class="container mx-auto px-6">
+                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl" data-i18n="reviews_title">What Our Customers Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="review-card">
+                        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_1_text">"Best seafood in town! The fish is incredibly fresh."</p>
+                        <p class="font-bold text-sm text-primary dark:text-secondary">— أحمد محمد</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_2_text">"Fast delivery and great taste. Highly recommended!"</p>
+                        <p class="font-bold text-sm text-primary dark:text-secondary">— مريم علي</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_3_text">"Authentic taste and professional service."</p>
+                        <p class="font-bold text-sm text-primary dark:text-secondary">— هاني يوسف</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="py-xl bg-surface">
+            <div class="container mx-auto px-6 md:px-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+                    <div class="lg:col-span-5 space-y-md">
+                        <h2 class="font-h2 text-h2 text-primary border-s-4 border-secondary ps-6"
+                            data-i18n="story_title">Our Story</h2>
+                        <p class="font-body-lg text-xl text-slate-700 dark:text-white italic leading-relaxed" data-i18n="story_quote">"The
+                            secret of great seafood is simplicity and freshness."</p>
+                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_1">At Matamkom, we take pride in being your primary destination for local seafood lovers. We started with a simple vision: to bring the freshest catch of the day directly to your table with the authentic taste you know and love.</p>
+                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_2">We believe in quality over everything. Whether you're dining in with your family or ordering online for a cozy night, we guarantee a professional service and a taste that reflects the true essence of Egyptian coastal cooking.</p>
+                        <div class="pt-base">
+                            <a class="font-label-caps text-secondary border-b-2 border-secondary pb-1 hover:text-primary-container hover:border-primary-container transition-colors"
+                                href="menu.html" data-i18n="btn_story_menu">SEE FULL MENU</a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img alt="Fishing boat" class="w-full aspect-[4/5] object-cover border border-slate-200"
+                                data-alt="Small traditional fishing boat at sunrise in a calm harbor with misty atmosphere and soft pastel sky"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuClwmnwJOB1alykxNY_ZmNZbjALL6374NrnbLriJgQtrLqc2UFDzAkiWxd55ntWDrZnm89EC4pxPWxlKPUFsd0QGtu7y7Sr3T8pUQuJuVSH9biLOQxb92t87iu85sLqkyaDcnEYuAMOXm_-CBaFIMdzZ3Dah-r22OgUxQkZzua-3_gi5wvMzpKHwVfAyetVuk9YU_pUtAqMp-cva3WhkjgRdlWqh27Rs-ZCuoWm1oOgE-Rw59tHu8mvnzi9AANU12vb-RBNPIurnw" />
+                            <img alt="Fresh oysters" class="w-full aspect-square object-cover border border-slate-200"
+                                data-alt="Macro photography of fresh chilled oysters on ice with a wedge of lemon and sprig of dill in bright natural lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIotZFwVPJfUDpOetE3yHcLAsoF1aJZo2TvUFIARAiGN1m318K7rZkUD9ybyXwHm9muc-IEt5jpo5lV0MCV0xmRyJ7PGU1EY1kbSYbD4CZPFmb8Pqvu3uiXv5gAj8JnoCbQxo4snmsowhbNt9P0YWGdxh7Zg-BeNFruxFVM7B6CpTLDoFepwp0ichst0JrSjpxQEGbiW4WD0qIJrcN0ZJG070k03zMbpoRruPD6mn7GbO345lhd2FqlhVsBMt3O7ySFryW7eSJWg" />
+                        </div>
+                        <div class="pt-xl space-y-4">
+                            <img alt="Chef preparing fish"
+                                class="w-full aspect-[4/6] object-cover border border-slate-200 shadow-sm"
+                                data-alt="Close-up of a chef's hands precisely garnishing a grilled sea bass dish with fine herbs in a clean minimalist kitchen"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOB7kgRqmyhYxEzHRuY25CXFoekDHm9FkVswNkMdpTEkTE9u0LgilWz-UcHTNkDxQicGyXvHWT9CSbEzmrTaDVU7AtF-wZoLS075zMTeyUguzLLW_2GpDymFhSQSH-bH3UYQhBiIi_AI1KG5DQ1unJi52tXrQN-FH1LHRGZDgc29Ia5WMXpX0r70hi1W2Q4C3MFDwWFJ4w5IFcUelhVPT7RvvzhlNIcuUwzZ8j4RELCV_TjE-YuK3BMMRlu7eeHpdVhfC4zkOmnw" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 full-width py-12">
+        <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto text-center">
+            <span class="font-bold text-[#003366] dark:text-blue-100 font-h1 text-2xl tracking-widest"
+                data-i18n="brand_name">MATAMKOM</span>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
+                    href="#" data-i18n="footer_sustainability">Sustainability</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
+                    href="#" data-i18n="footer_careers">Careers</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
+                    href="#" data-i18n="footer_privacy">Privacy</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
+                    href="#" data-i18n="footer_terms">Terms</a>
+            </div>
+            <p class="text-xs font-['Epilogue'] tracking-normal text-slate-500" data-i18n="footer_copy">© 2026 MATAMKOM. PRECISELY SOURCED.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="sticky-mobile-cta">
+        <a href="menu.html" class="sticky-cta-btn sticky-btn-secondary">
+            <span class="flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+                <span data-i18n="btn_order_now">اطلب الآن</span>
+            </span>
+        </a>
+        <a href="reservation.html" class="sticky-cta-btn sticky-btn-primary">
+            <span class="flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+                <span data-i18n="btn_book_table">احجز</span>
+            </span>
+        </a>
+    </div>
+
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white dark:bg-slate-900 px-2 pb-safe border-t border-slate-200 dark:border-slate-800 z-50 h-16">
+        <a class="flex flex-col items-center justify-center text-[#003366] dark:text-blue-300 border-t-2 border-[#003366] dark:border-blue-300 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150"
+            href="index.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']"
+                data-i18n="nav_home">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-transform duration-150"
+            href="menu.html">
+            <span class="material-symbols-outlined">restaurant_menu</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']"
+                data-i18n="nav_menu">Menu</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-transform duration-150"
+            href="contact.html">
+            <span class="material-symbols-outlined">location_on</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']"
+                data-i18n="nav_contact">Contact</span>
+        </a>
+    </nav>
+</body>
+
+</html>

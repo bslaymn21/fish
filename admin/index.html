@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MATAMKU ADMIN | Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Translation & Theme System -->
+    <script src="../js/translations.js"></script>
+    <script src="../js/language-selector.js"></script>
+    <script src="../js/theme-manager.js"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 font-body-md text-slate-800 dark:text-slate-200 antialiased transition-colors">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-slate-900 text-white flex-shrink-0 flex flex-col hidden md:flex">
+            <div class="p-6 border-b border-slate-800">
+                <span class="text-lg font-bold tracking-widest font-h1" data-i18n="admin_brand">COASTAL ADMIN</span>
+            </div>
+            <nav class="flex-grow p-4 space-y-2">
+                <button onclick="switchTab('dashboard')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-lg transition-all" id="tab-dashboard">
+                    <span class="material-symbols-outlined">dashboard</span> <span data-i18n="admin_tab_dashboard">Dashboard</span>
+                </button>
+                <button onclick="switchTab('menu')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-lg transition-all" id="tab-menu">
+                    <span class="material-symbols-outlined">restaurant_menu</span> <span data-i18n="admin_tab_menu">Menu Items</span>
+                </button>
+                <button onclick="switchTab('stats')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-lg transition-all" id="tab-stats">
+                    <span class="material-symbols-outlined">analytics</span> <span data-i18n="admin_tab_stats">Analytics</span>
+                </button>
+            </nav>
+            <div class="p-4 border-t border-slate-800">
+                <a href="../index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-lg text-slate-400">
+                    <span class="material-symbols-outlined">logout</span> <span data-i18n="admin_view_site">View Site</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex flex-col">
+            <!-- Top Bar -->
+    <header class="glass-surface border-b border-slate-200 dark:border-white/10 py-4 px-8 sticky top-0 z-40 transition-colors">
+        <div class="max-w-container-max mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary dark:text-abyss-primary">dashboard</span>
+                <h1 class="text-xl font-bold tracking-widest text-primary dark:text-abyss-primary font-h1" data-i18n="admin_brand">COASTAL ADMIN</h1>
+            </div>
+            <div class="flex items-center gap-6">
+                <button id="theme-toggle" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant" data-i18n-title="theme_toggle_dark">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <div class="flex items-center gap-3 border-l border-slate-200 dark:border-white/10 pl-6">
+                    <div class="w-8 h-8 rounded-full bg-primary/10 dark:bg-abyss-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary dark:text-abyss-primary text-sm">person</span>
+                    </div>
+                    <span class="text-sm font-bold text-primary dark:text-white">Basel</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-6 space-y-6" id="content-dashboard">
+                <!-- Stat Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+                    <div class="bg-white dark:bg-abyss-container p-lg border border-slate-200 dark:border-white/10 rounded-xl transition-colors">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="material-symbols-outlined p-3 bg-blue-50 dark:bg-abyss-primary/10 text-blue-600 dark:text-abyss-primary rounded-xl">group</span>
+                            <span class="text-xs font-bold text-green-600 dark:text-abyss-secondary">+12%</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-abyss-on-variant text-xs font-label-caps mb-1" data-i18n="admin_stat_visitors">Total Visitors</p>
+                        <h3 class="text-2xl font-bold text-primary dark:text-white">1,284</h3>
+                    </div>
+                    <div class="bg-white dark:bg-abyss-container p-lg border border-slate-200 dark:border-white/10 rounded-xl transition-colors">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="material-symbols-outlined p-3 bg-blue-50 dark:bg-abyss-primary/10 text-blue-600 dark:text-abyss-primary rounded-xl">restaurant_menu</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-abyss-on-variant text-xs font-label-caps mb-1" data-i18n="admin_stat_items">Menu Items</p>
+                        <h3 class="text-2xl font-bold text-primary dark:text-white">24</h3>
+                    </div>
+                    <div class="bg-white dark:bg-abyss-container p-lg border border-slate-200 dark:border-white/10 rounded-xl transition-colors">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="material-symbols-outlined p-3 bg-green-50 dark:bg-abyss-secondary/10 text-green-600 dark:text-abyss-secondary rounded-xl">cloud_done</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-abyss-on-variant text-xs font-label-caps mb-1" data-i18n="admin_stat_status">Platform Status</p>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-2xl font-bold text-primary dark:text-white" data-i18n="admin_stat_live">Live</h3>
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Management Content (Hidden by default) -->
+            <div class="p-6 space-y-6 hidden" id="content-menu">
+                <!-- Inventory Table -->
+                <div class="bg-white dark:bg-abyss-container border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden transition-colors">
+                    <div class="p-6 border-b border-slate-200 dark:border-white/10 flex justify-between items-center bg-slate-50/50 dark:bg-white/5">
+                        <h2 class="font-h2 text-headline-md text-primary dark:text-white" data-i18n="admin_manage_title">Inventory Management</h2>
+                        <div class="flex gap-2">
+                            <button class="p-2 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 text-slate-500">
+                                <span class="material-symbols-outlined">filter_list</span>
+                            </button>
+                            <button class="p-2 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 text-slate-500">
+                                <span class="material-symbols-outlined">search</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-start">
+                            <thead class="bg-slate-50/50 dark:bg-white/5 text-slate-500 dark:text-abyss-on-variant uppercase text-[10px] font-bold tracking-widest">
+                                <tr>
+                                    <th class="px-6 py-4" data-i18n="admin_table_dish">Dish</th>
+                                    <th class="px-6 py-4" data-i18n="admin_table_cat">Category</th>
+                                    <th class="px-6 py-4" data-i18n="admin_table_price">Price</th>
+                                    <th class="px-4 py-4" data-i18n="admin_table_actions">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventory-table-body" class="divide-y divide-slate-100 dark:divide-white/5 text-sm dark:text-abyss-on-surface">
+                                <!-- Dynamic Rows Injected Here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Page (Placeholder) -->
+            <div class="p-6 hidden" id="content-stats">
+                <div class="bg-white p-8 border border-slate-200 shadow-sm rounded-xl text-center">
+                    <span class="material-symbols-outlined text-6xl text-slate-200 mb-4">bar_chart</span>
+                    <h2 class="text-2xl font-bold mb-2">Traffic Analytics</h2>
+                    <p class="text-slate-500 max-w-sm mx-auto mb-6">Detailed visitor tracking and popular item heatmaps will be displayed here.</p>
+                    <div class="flex justify-center gap-4">
+                        <div class="w-12 h-32 bg-slate-100 rounded-t-lg"></div>
+                        <div class="w-12 h-48 bg-[#003366] rounded-t-lg"></div>
+                        <div class="w-12 h-24 bg-slate-100 rounded-t-lg"></div>
+                        <div class="w-12 h-56 bg-secondary-container rounded-t-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal (Add/Edit Item) -->
+    <div id="item-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-6">
+        <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-md"></div>
+        <div class="bg-white dark:bg-abyss-container w-full max-w-2xl rounded-xl relative border border-slate-200 dark:border-white/10 shadow-2xl transition-colors">
+            <div class="p-6 border-b border-slate-200 dark:border-white/10 flex justify-between items-center">
+                <h2 class="font-h2 text-headline-md text-primary dark:text-white" id="modal-title" data-i18n="admin_modal_add">Add Menu Item</h2>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="item-form" class="p-6 grid grid-cols-1 md:grid-cols-2 gap-sm">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="admin_label_name_en">Name (EN)</label>
+                    <input type="text" id="item-name-en" class="w-full bg-slate-50 dark:bg-abyss-background border-slate-200 dark:border-white/5 rounded-lg text-sm dark:text-white focus:border-secondary dark:focus:border-abyss-secondary focus:ring-0" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="admin_label_name_ar">Name (AR)</label>
+                    <input type="text" id="item-name-ar" class="w-full bg-slate-50 dark:bg-abyss-background border-slate-200 dark:border-white/5 rounded-lg text-sm dark:text-white focus:border-secondary dark:focus:border-abyss-secondary focus:ring-0" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="admin_label_cat">Category</label>
+                    <select id="item-category" class="w-full bg-slate-50 dark:bg-abyss-background border-slate-200 dark:border-white/5 rounded-lg text-sm dark:text-white focus:border-secondary dark:focus:border-abyss-secondary focus:ring-0">
+                        <option value="Starters" data-i18n="admin_cat_starters">Starters</option>
+                        <option value="Main Course" data-i18n="admin_cat_mains">Main Course</option>
+                        <option value="Platters" data-i18n="admin_cat_platters">Platters</option>
+                        <option value="Gluten-Free" data-i18n="admin_cat_gluten">Gluten-Free</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="admin_label_price">Price ($)</label>
+                    <input type="number" step="0.01" id="item-price" class="w-full bg-slate-50 dark:bg-abyss-background border-slate-200 dark:border-white/5 rounded-lg text-sm dark:text-white focus:border-secondary dark:focus:border-abyss-secondary focus:ring-0" required>
+                </div>
+                <div class="md:col-span-2 space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="admin_label_desc_en">Description (EN)</label>
+                    <textarea id="item-desc-en" rows="2" class="w-full bg-slate-50 dark:bg-abyss-background border-slate-200 dark:border-white/5 rounded-lg text-sm dark:text-white focus:border-secondary dark:focus:border-abyss-secondary focus:ring-0"></textarea>
+                </div>
+                <div class="md:col-span-2 space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="admin_label_desc_ar">Description (AR)</label>
+                    <textarea id="item-desc-ar" rows="2" class="w-full bg-slate-50 dark:bg-abyss-background border-slate-200 dark:border-white/5 rounded-lg text-sm dark:text-white focus:border-secondary dark:focus:border-abyss-secondary focus:ring-0"></textarea>
+                </div>
+                <div class="md:col-span-2 space-y-1">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest" data-i18n="admin_label_image">Image URL</label>
+                    <input type="text" id="item-image" class="w-full bg-slate-50 dark:bg-abyss-background border-slate-200 dark:border-white/5 rounded-lg text-sm dark:text-white focus:border-secondary dark:focus:border-abyss-secondary focus:ring-0">
+                </div>
+                <div class="md:col-span-2 pt-4">
+                    <button type="submit" class="w-full bg-secondary dark:bg-abyss-secondary text-white dark:text-abyss-on-secondary py-3 font-label-caps text-label-caps tracking-widest bioluminescent-glow transition-all" data-i18n="admin_btn_save">SAVE CHANGES</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="./admin.js"></script>
+</body>
+</html>

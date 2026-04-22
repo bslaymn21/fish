@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MATAMKOM | Reserve Your Table</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet" />
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Shared Configuration & Styles -->
+    <script src="./js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- Translation & Theme System -->
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
+    <script src="./js/theme-manager.js"></script>
+    <script src="./js/preloader.js"></script>
+</head>
+
+<body class="font-body-md text-on-background bg-surface-bright dark:bg-slate-950 transition-colors selection:bg-primary-container selection:text-white">
+    <!-- TopAppBar -->
+    <header class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
+        <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
+            <div class="flex items-center gap-4">
+                <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1" data-i18n="brand_name">MATAMKOM</span>
+            </div>
+            <nav class="hidden md:flex gap-md">
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="index.html" data-i18n="nav_home">Home</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="menu.html" data-i18n="nav_menu">Menu</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="contact.html" data-i18n="nav_contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLanguage()"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant"
+                    title="Change Language">
+                    <span class="material-symbols-outlined">translate</span>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant"
+                    data-i18n-title="theme_toggle_dark">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="min-h-screen pt-24 pb-20">
+        <!-- Hero Section -->
+        <section class="max-w-4xl mx-auto px-6 text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-h1 text-primary dark:text-white mb-6 uppercase tracking-tighter" data-i18n="res_title">Reserve Your Table</h1>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed" data-i18n="res_desc">Join us for an unforgettable culinary journey. Secure your spot in our dining room.</p>
+        </section>
+
+        <!-- Reservation Form -->
+        <section class="max-w-3xl mx-auto px-6">
+            <div id="reservation-form-container" class="glass-surface p-8 md:p-12 border border-slate-200 dark:border-white/10 shadow-2xl relative overflow-hidden">
+                <!-- Success Message (Hidden by default) -->
+                <div id="success-state" class="hidden absolute inset-0 bg-white dark:bg-slate-900 z-10 flex flex-col items-center justify-center text-center p-8 animate-fade-in">
+                    <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-4xl">check_circle</span>
+                    </div>
+                    <h2 class="text-3xl font-h1 text-primary dark:text-white mb-4 uppercase" data-i18n="res_success_title">Reservation Received</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mb-8" data-i18n="res_success_desc">Thank you for choosing Matamku. We have received your request and will confirm your table shortly.</p>
+                    <button onclick="window.location.reload()" class="border-b-2 border-primary dark:border-white text-primary dark:text-white font-bold tracking-widest text-sm hover:opacity-70 transition-opacity">MAKE ANOTHER RESERVATION</button>
+                </div>
+
+                <form id="reservation-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold tracking-widest text-slate-400 uppercase mb-2" data-i18n="res_label_name">Full Name</label>
+                        <input type="text" required class="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 p-4 text-primary dark:text-white focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold tracking-widest text-slate-400 uppercase mb-2" data-i18n="res_label_email">Email Address</label>
+                        <input type="email" required class="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 p-4 text-primary dark:text-white focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold tracking-widest text-slate-400 uppercase mb-2" data-i18n="res_label_phone">Phone Number</label>
+                        <input type="tel" required class="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 p-4 text-primary dark:text-white focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold tracking-widest text-slate-400 uppercase mb-2" data-i18n="res_label_date">Date</label>
+                        <input type="date" required class="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 p-4 text-primary dark:text-white focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold tracking-widest text-slate-400 uppercase mb-2" data-i18n="res_label_time">Time</label>
+                        <input type="time" required class="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 p-4 text-primary dark:text-white focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" />
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold tracking-widest text-slate-400 uppercase mb-2" data-i18n="res_label_guests">Number of Guests</label>
+                        <select required class="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 p-4 text-primary dark:text-white focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
+                            <option value="7+">7+ People</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold tracking-widest text-slate-400 uppercase mb-2" data-i18n="res_label_special">Special Requests (Optional)</label>
+                        <textarea class="w-full bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 p-4 min-h-[100px] text-primary dark:text-white focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none"></textarea>
+                    </div>
+                    <div class="md:col-span-2 pt-4">
+                        <button type="submit" class="w-full bg-primary dark:bg-white text-white dark:text-primary py-5 px-8 font-bold tracking-[0.2em] hover:bg-secondary dark:hover:bg-abyss-primary dark:hover:text-white transition-all shadow-xl" data-i18n="res_btn_submit">CONFIRM RESERVATION</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-12 full-width transition-colors">
+        <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto">
+            <span class="font-bold text-primary dark:text-blue-100 tracking-widest font-h1 text-2xl" data-i18n="brand_name">MATAMKOM</span>
+            <div class="flex flex-wrap justify-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a class="hover:text-primary dark:hover:text-white transition-colors" href="#" data-i18n="footer_sustainability">Sustainability</a>
+                <a class="hover:text-primary dark:hover:text-white transition-colors" href="#" data-i18n="footer_careers">Careers</a>
+                <a class="hover:text-primary dark:hover:text-white transition-colors" href="#" data-i18n="footer_privacy">Privacy</a>
+                <a class="hover:text-primary dark:hover:text-white transition-colors" href="#" data-i18n="footer_terms">Terms</a>
+            </div>
+            <p class="text-[10px] font-bold tracking-[0.2em] text-slate-400" data-i18n="footer_copy">© 2026 MATAMKOM. PRECISELY SOURCED.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('reservation-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('success-state').classList.remove('hidden');
+        });
+
+        // Initialize language and theme
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            applyLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MATAMKOM | Our Menu</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Shared Configuration & Styles -->
+    <script src="./js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- Translation & Theme System -->
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
+    <script src="./js/theme-manager.js"></script>
+    <script src="./js/preloader.js"></script>
+</head>
+
+<body class="font-body-md text-on-surface overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header
+        class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
+        <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
+            <div class="flex items-center gap-4">
+                <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1"
+                    data-i18n="brand_name">MATAMKOM</span>
+            </div>
+            <nav class="hidden md:flex gap-md">
+                <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
+                    href="index.html" data-i18n="nav_home">Home</a>
+                <a class="text-primary dark:text-abyss-primary font-bold font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
+                    href="menu.html" data-i18n="nav_menu">Menu</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
+                    href="contact.html" data-i18n="nav_contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <!-- Cart Trigger -->
+                <button onclick="toggleCart()" class="relative p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-primary dark:text-white">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full hidden cart-count">0</span>
+                </button>
+                <button onclick="toggleLanguage()"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant">
+                    <span class="material-symbols-outlined">translate</span>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-xl pb-32">
+        <!-- Hero Section -->
+        <div class="relative overflow-hidden mb-xl rounded-3xl min-h-[300px] md:min-h-[400px] flex items-center px-8 md:px-16 shadow-2xl">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover animate-ken-burns" src="/home/basel/.gemini/antigravity/brain/db11400a-6149-4eab-9afa-d08638f84405/menu_hero_bg_1776895495899.png">
+                <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-black/90 via-black/40 to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-2xl text-start">
+                <span class="font-label-caps text-secondary tracking-widest mb-4 block" data-i18n="menu_tagline">PRECISELY SOURCED</span>
+                <h1 class="font-h1 text-4xl md:text-6xl text-white mb-base" data-i18n="menu_title">Our Menu</h1>
+                <p class="font-body-lg text-lg md:text-xl text-white/90 max-w-2xl" data-i18n="menu_desc">A curated selection of the finest coastal treasures, prepared with contemporary precision.</p>
+            </div>
+        </div>
+
+        <!-- Filter Chips -->
+        <div id="filter-container" class="flex justify-start md:justify-start gap-4 overflow-x-auto pb-6 no-scrollbar mb-10 sticky top-20 z-40 bg-white/80 dark:bg-abyss-surface/80 backdrop-blur-md py-4 -mx-6 px-6">
+            <button onclick="applyFilter('all', this)" class="active-filter px-8 py-3 rounded-full font-bold whitespace-nowrap shadow-sm transition-all" data-i18n="filter_all">All</button>
+            <button onclick="applyFilter('Starters', this)" class="bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-white px-8 py-3 rounded-full font-bold whitespace-nowrap hover:bg-slate-200 transition-all" data-i18n="filter_starters">Starters</button>
+            <button onclick="applyFilter('Main Course', this)" class="bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-white px-8 py-3 rounded-full font-bold whitespace-nowrap hover:bg-slate-200 transition-all" data-i18n="filter_mains">Mains</button>
+            <button onclick="applyFilter('Platters', this)" class="bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-white px-8 py-3 rounded-full font-bold whitespace-nowrap hover:bg-slate-200 transition-all" data-i18n="filter_platters">Platters</button>
+        </div>
+
+        <!-- Menu Container -->
+        <div id="menu-container" class="space-y-16">
+            <!-- Dynamic Sections -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-20 px-10">
+            <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">search_off</span>
+            <h3 class="text-2xl font-bold text-slate-400" data-i18n="no_items_found">No items found</h3>
+        </div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] cart-overlay"></div>
+    <div id="cart-drawer" class="cart-drawer flex flex-col">
+        <div class="p-6 border-b border-slate-100 dark:border-white/10 flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-primary dark:text-white" data-i18n="cart_title">Your Order</h2>
+            <button onclick="toggleCart()" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4">
+            <!-- Cart items here -->
+        </div>
+        <div class="p-6 border-t border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-black/20">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-slate-500 font-bold" data-i18n="cart_total">Total</span>
+                <span id="cart-total-price" class="text-3xl font-bold text-secondary">0 ج.م</span>
+            </div>
+            <button onclick="sendWhatsAppOrder()" class="w-full py-5 rounded-2xl bg-[#25D366] text-white font-bold text-xl flex items-center justify-center gap-3 shadow-xl bioluminescent-glow">
+                <span class="material-symbols-outlined text-2xl">send</span>
+                <span data-i18n="btn_send_order">إرسال الطلب عبر واتساب</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Dish Modal -->
+    <div id="dish-modal" class="fixed inset-0 z-[100] modal-overlay items-center justify-center p-4">
+        <div class="absolute inset-0" onclick="closeModal()"></div>
+        <div class="bg-white dark:bg-abyss-container w-full max-w-2xl rounded-[32px] shadow-3xl overflow-hidden relative z-10 modal-content">
+            <div id="modal-content-container">
+                <!-- Content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sticky Footer Order Button -->
+    <div class="md:hidden fixed bottom-24 left-0 w-full px-6 z-40">
+        <button onclick="toggleCart()" class="w-full bg-primary py-4 rounded-2xl text-white font-bold shadow-2xl flex items-center justify-center gap-3">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span data-i18n="btn_order_now">اطلب الآن</span>
+            <span id="mobile-cart-count" class="bg-secondary px-2 rounded-full text-xs">0</span>
+        </button>
+    </div>
+
+    <!-- Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-2 pb-safe border-t border-slate-200 dark:border-slate-800 z-50 h-16">
+        <a class="flex flex-col items-center justify-center text-slate-400" href="index.html">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-[10px] uppercase font-bold mt-1" data-i18n="nav_home">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-primary dark:text-blue-300" href="menu.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+            <span class="text-[10px] uppercase font-bold mt-1" data-i18n="nav_menu">Menu</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400" href="contact.html">
+            <span class="material-symbols-outlined">alternate_email</span>
+            <span class="text-[10px] uppercase font-bold mt-1" data-i18n="nav_contact">Contact</span>
+        </a>
+    </nav>
+
+    <script src="./js/data.js"></script>
+    <script>
+        let cart = [];
+        let currentFilter = 'all';
+        let selectedOptions = { method: 'Grilled', size: 'Medium' };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu('all');
+            updateCartUI();
+        });
+
+        function renderMenu(filter) {
+            const data = getMenuData();
+            const container = document.getElementById('menu-container');
+            const emptyState = document.getElementById('empty-state');
+            container.innerHTML = '';
+            
+            const categories = [...new Set(data.map(item => item.category))];
+            let hasResults = false;
+
+            categories.forEach(cat => {
+                if (filter !== 'all' && cat !== filter) return;
+                
+                const items = data.filter(item => item.category === cat);
+                if (items.length === 0) return;
+                hasResults = true;
+
+                const section = document.createElement('section');
+                const currentLang = localStorage.getItem('preferred_language') || 'en';
+                const catKey = `filter_${cat.toLowerCase().replace(/\s+/g, '')}`;
+                const translatedCat = (translations[currentLang] && translations[currentLang][catKey]) || cat;
+
+                section.innerHTML = `
+                    <div class="flex items-center gap-base mb-8">
+                        <h2 class="font-h2 text-2xl md:text-3xl text-primary dark:text-white">${translatedCat}</h2>
+                        <div class="h-[1px] flex-grow bg-slate-200 dark:bg-white/10"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${items.map(item => createMenuItemHTML(item, currentLang)).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+
+            emptyState.classList.toggle('hidden', hasResults);
+        }
+
+        function createMenuItemHTML(item, lang) {
+            const name = lang === 'ar' ? item.name_ar : item.name;
+            const desc = lang === 'ar' ? item.description_ar : item.description;
+            const currency = translations[lang].price_currency;
+            const startsFrom = translations[lang].price_starting;
+            const orderedCountText = translations[lang].ordered_count.replace('{n}', item.timesOrdered || '100');
+
+            return `
+                <div onclick="openModal(${item.id})" class="group relative flex flex-col bg-white dark:bg-abyss-container border border-slate-100 dark:border-white/5 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                    <!-- Badges -->
+                    <div class="absolute top-4 left-4 z-10 flex flex-col gap-2">
+                        ${item.isPopular ? `<span class="badge-tag badge-bestseller"><span class="material-symbols-outlined text-[12px]">star</span> ${translations[lang].tag_bestseller}</span>` : ''}
+                        ${item.isSpecial ? `<span class="badge-tag badge-special"><span class="material-symbols-outlined text-[12px]">local_fire_department</span> ${translations[lang].tag_special}</span>` : ''}
+                    </div>
+                    
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="${item.image}">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-h3 text-xl text-primary dark:text-white group-hover:text-secondary transition-colors">${name}</h3>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-4 h-10">${desc}</p>
+                        
+                        <div class="flex items-center gap-2 mb-6 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                            <span class="material-symbols-outlined text-[14px]">visibility</span>
+                            ${orderedCountText}
+                        </div>
+
+                        <div class="flex justify-between items-center mt-auto border-t border-slate-50 dark:border-white/5 pt-4">
+                            <div>
+                                <span class="text-[10px] block opacity-60 uppercase font-bold">${startsFrom}</span>
+                                <span class="text-2xl font-black text-secondary">${item.price} <span class="text-sm font-bold">${currency}</span></span>
+                            </div>
+                            <button class="bg-primary hover:bg-secondary text-white px-5 py-3 rounded-2xl font-bold flex items-center gap-2 transition-all active:scale-95">
+                                <span class="material-symbols-outlined text-lg">add</span>
+                                <span class="text-sm" data-i18n="btn_add_order">${translations[lang].btn_add_order}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function applyFilter(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll('#filter-container button').forEach(b => b.classList.remove('active-filter', 'bg-primary', 'text-white'));
+            document.querySelectorAll('#filter-container button').forEach(b => b.classList.add('bg-slate-100', 'dark:bg-white/5'));
+            
+            btn.classList.add('active-filter');
+            btn.classList.remove('bg-slate-100', 'dark:bg-white/5');
+            renderMenu(cat);
+        }
+
+        function openModal(id) {
+            const data = getMenuData();
+            const item = data.find(i => i.id === id);
+            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            const t = translations[currentLang];
+            
+            selectedOptions = { method: t.method_grilled, size: t.size_medium };
+
+            const container = document.getElementById('modal-content-container');
+            container.innerHTML = `
+                <div class="flex flex-col md:flex-row min-h-[500px]">
+                    <!-- Image -->
+                    <div class="md:w-[45%] relative h-56 md:h-auto overflow-hidden">
+                         <img class="w-full h-full object-cover" src="${item.image}">
+                         <button onclick="closeModal()" class="md:hidden absolute top-4 right-4 w-10 h-10 bg-black/40 text-white rounded-full flex items-center justify-center backdrop-blur-md">
+                            <span class="material-symbols-outlined">close</span>
+                         </button>
+                    </div>
+                    <!-- Details -->
+                    <div class="md:w-[55%] p-6 md:p-10 flex flex-col justify-between">
+                        <div>
+                             <div class="hidden md:flex justify-end mb-4">
+                                <button onclick="closeModal()" class="text-slate-400 hover:text-primary dark:hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined">close</span>
+                                </button>
+                             </div>
+                             <h2 class="text-2xl md:text-3xl font-bold text-primary dark:text-white mb-2">${currentLang === 'ar' ? item.name_ar : item.name}</h2>
+                             <p class="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">${currentLang === 'ar' ? item.description_ar : item.description}</p>
+                             
+                             <div class="space-y-6">
+                                <div>
+                                    <label class="block font-bold text-slate-400 text-[10px] mb-3 uppercase tracking-widest">${t.cooking_method}</label>
+                                    <div class="flex flex-wrap gap-2">
+                                        <div onclick="selectOption('method', '${t.method_grilled}', this)" class="option-chip active">${t.method_grilled}</div>
+                                        <div onclick="selectOption('method', '${t.method_fried}', this)" class="option-chip">${t.method_fried}</div>
+                                        <div onclick="selectOption('method', '${t.method_singari}', this)" class="option-chip">${t.method_singari}</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-slate-400 text-[10px] mb-3 uppercase tracking-widest">${t.size}</label>
+                                    <div class="flex flex-wrap gap-2">
+                                        <div onclick="selectOption('size', '${t.size_small}', this)" class="option-chip">${t.size_small}</div>
+                                        <div onclick="selectOption('size', '${t.size_medium}', this)" class="option-chip active">${t.size_medium}</div>
+                                        <div onclick="selectOption('size', '${t.size_large}', this)" class="option-chip">${t.size_large}</div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+
+                        <div class="mt-10 flex items-center justify-between gap-6 border-t border-slate-100 dark:border-white/5 pt-6">
+                            <span class="text-2xl font-black text-secondary">${item.price} ${t.price_currency}</span>
+                            <button onclick="addToOrder(${item.id})" class="flex-grow bg-primary py-4 rounded-xl text-white font-bold text-lg hover:bg-secondary transition-all active:scale-95 shadow-xl">
+                                ${t.btn_add_order}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('dish-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function selectOption(type, value, el) {
+            selectedOptions[type] = value;
+            el.parentElement.querySelectorAll('.option-chip').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('dish-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function addToOrder(id) {
+            const data = getMenuData();
+            const item = data.find(i => i.id === id);
+            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            
+            const cartItem = {
+                id: Date.now(), // unique instance in cart
+                dishId: item.id,
+                name: currentLang === 'ar' ? item.name_ar : item.name,
+                price: item.price,
+                options: { ...selectedOptions },
+                quantity: 1
+            };
+            
+            cart.push(cartItem);
+            closeModal();
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function toggleCart(forceOpen = false) {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            if (forceOpen) {
+                drawer.classList.add('open');
+                overlay.classList.add('active');
+            } else {
+                drawer.classList.toggle('open');
+                overlay.classList.toggle('active');
+            }
+        }
+
+        function updateCartUI() {
+            const itemsContainer = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('cart-total-price');
+            const badge = document.getElementById('cart-badge');
+            const mobileCount = document.getElementById('mobile-cart-count');
+            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            const emptyMsg = translations[currentLang].cart_empty;
+
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `<div class="flex flex-col items-center justify-center h-48 opacity-40">
+                    <span class="material-symbols-outlined text-4xl mb-2">shopping_basket</span>
+                    <p class="font-bold">${emptyMsg}</p>
+                </div>`;
+                badge.classList.add('hidden');
+                mobileCount.innerText = '0';
+                totalDisplay.innerText = `0 ${translations[currentLang].price_currency}`;
+                return;
+            }
+
+            badge.classList.remove('hidden');
+            badge.innerText = cart.length;
+            mobileCount.innerText = cart.length;
+
+            itemsContainer.innerHTML = cart.map(item => `
+                <div class="flex gap-4 bg-slate-50 dark:bg-white/5 p-4 rounded-2xl border border-slate-100 dark:border-white/10">
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-primary dark:text-white">${item.name}</h4>
+                        <p class="text-xs text-slate-500">${item.options.method} • ${item.options.size}</p>
+                        <span class="text-secondary font-black mt-2 block">${item.price} ${translations[currentLang].price_currency}</span>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-slate-300 hover:text-red-500 transition-colors">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalDisplay.innerText = `${total} ${translations[currentLang].price_currency}`;
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartUI();
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) return;
+            
+            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            const t = translations[currentLang];
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+            let message = `${t.order_msg_header}\n\n`;
+            message += `${t.order_msg_hello}\n\n`;
+            
+            cart.forEach((item, index) => {
+                message += `${index + 1}. *${item.name}*\n`;
+                message += `   - ${t.cooking_method}: ${item.options.method}\n`;
+                message += `   - ${t.size}: ${item.options.size}\n`;
+                message += `   - ${t.admin_table_price}: ${item.price} ${t.price_currency}\n\n`;
+            });
+
+            message += `------------------\n`;
+            message += `*${t.cart_total}: ${total} ${t.price_currency}*`;
+
+            const encodedMsg = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/201234567890?text=${encodedMsg}`; // Placeholder number
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+
+</html>
