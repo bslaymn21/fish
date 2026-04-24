@@ -52,6 +52,21 @@ function setLanguage(lang) {
 }
 
 function applyLanguage(lang) {
+    // Inject Dynamic Settings from Admin
+    if (typeof getSiteSettings === 'function') {
+        const settings = getSiteSettings();
+        if (translations.en) {
+            translations.en.contact_address_detail = settings.address_en;
+            translations.en.contact_time_lunch = settings.hours_en;
+            translations.en.contact_time_dinner = ""; // Simplify
+        }
+        if (translations.ar) {
+            translations.ar.contact_address_detail = settings.address_ar;
+            translations.ar.contact_time_lunch = settings.hours_ar;
+            translations.ar.contact_time_dinner = ""; // Simplify
+        }
+    }
+
     const html = document.documentElement;
     html.lang = lang;
     html.dir = lang === 'ar' ? 'rtl' : 'ltr';

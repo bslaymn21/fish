@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Explore our menu of premium Mediterranean seafood. From grilled sea bass to King salmon and grand seafood platters at MATAMKOM." />
+    <meta name="keywords" content="Seafood Menu, Grilled Fish Alexandria, Salmon Steak, Seafood Platters, Fresh Fish Menu" />
     <title>MATAMKOM | Our Menu</title>
 
     <!-- Fonts -->
@@ -39,27 +41,31 @@
                 <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1"
                     data-i18n="brand_name">MATAMKOM</span>
             </div>
-            <nav class="hidden md:flex gap-md">
+            <nav class="hidden md:flex gap-md items-center">
                 <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
                     href="index.html" data-i18n="nav_home">Home</a>
                 <a class="text-primary dark:text-abyss-primary font-bold font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
                     href="menu.html" data-i18n="nav_menu">Menu</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
-                    href="contact.html" data-i18n="nav_contact">Contact</a>
+                    href="reservation.html" data-i18n="nav_orders">Reservations</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
+                    href="contact.html" data-i18n="nav_contact">Contact Us</a>
             </nav>
             <div class="flex items-center gap-3">
-                <!-- Cart Trigger -->
-                <button onclick="toggleCart()" class="relative p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-primary dark:text-white">
-                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
-                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full hidden cart-count">0</span>
-                </button>
                 <button onclick="toggleLanguage()"
-                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant">
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant"
+                    title="Change Language">
                     <span class="material-symbols-outlined">translate</span>
                 </button>
                 <button id="theme-toggle"
-                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant">
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant"
+                    data-i18n-title="theme_toggle_dark">
                     <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <!-- Desktop Cart -->
+                <button onclick="toggleCart()" class="hidden md:flex relative p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors items-center justify-center text-slate-500 dark:text-abyss-on-variant">
+                    <span class="material-symbols-outlined">shopping_basket</span>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 hidden">0</span>
                 </button>
             </div>
         </div>
@@ -69,8 +75,9 @@
         <!-- Hero Section -->
         <div class="relative overflow-hidden mb-xl rounded-3xl min-h-[300px] md:min-h-[400px] flex items-center px-8 md:px-16 shadow-2xl">
             <div class="absolute inset-0 z-0">
-                <img class="w-full h-full object-cover animate-ken-burns" src="/home/basel/.gemini/antigravity/brain/db11400a-6149-4eab-9afa-d08638f84405/menu_hero_bg_1776895495899.png">
-                <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-black/90 via-black/40 to-transparent"></div>
+                <img class="w-full h-full object-cover animate-ken-burns" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop">
+                <div class="absolute inset-0 bg-black/60 dark:bg-black/80"></div>
+                <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-black/60 via-transparent to-transparent"></div>
             </div>
             <div class="relative z-10 max-w-2xl text-start">
                 <span class="font-label-caps text-secondary tracking-widest mb-4 block" data-i18n="menu_tagline">PRECISELY SOURCED</span>
@@ -112,13 +119,13 @@
             <!-- Cart items here -->
         </div>
         <div class="p-6 border-t border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-black/20">
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between items-center mb-4">
                 <span class="text-slate-500 font-bold" data-i18n="cart_total">Total</span>
-                <span id="cart-total-price" class="text-3xl font-bold text-secondary">0 ج.م</span>
+                <span id="cart-total-price" class="text-2xl font-bold text-secondary">0 ج.م</span>
             </div>
-            <button onclick="sendWhatsAppOrder()" class="w-full py-5 rounded-2xl bg-[#25D366] text-white font-bold text-xl flex items-center justify-center gap-3 shadow-xl bioluminescent-glow">
-                <span class="material-symbols-outlined text-2xl">send</span>
-                <span data-i18n="btn_send_order">إرسال الطلب عبر واتساب</span>
+            <button onclick="sendWhatsAppOrder()" class="w-full py-4 rounded-xl bg-[#25D366] text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg bioluminescent-glow transition-all active:scale-95">
+                <span class="material-symbols-outlined text-xl">send</span>
+                <span data-i18n="btn_send_order" class="text-sm md:text-lg">إرسال عبر واتساب</span>
             </button>
         </div>
     </div>
@@ -133,28 +140,31 @@
         </div>
     </div>
 
-    <!-- Mobile Sticky Footer Order Button -->
-    <div class="md:hidden fixed bottom-24 left-0 w-full px-6 z-40">
-        <button onclick="toggleCart()" class="w-full bg-primary py-4 rounded-2xl text-white font-bold shadow-2xl flex items-center justify-center gap-3">
-            <span class="material-symbols-outlined">shopping_bag</span>
-            <span data-i18n="btn_order_now">اطلب الآن</span>
-            <span id="mobile-cart-count" class="bg-secondary px-2 rounded-full text-xs">0</span>
+    <!-- Floating Order Button -->
+    <div class="fixed bottom-24 md:bottom-10 right-6 z-[60]">
+        <button onclick="toggleCart()" class="relative w-16 h-16 bg-primary text-white rounded-full shadow-[0_8px_25px_rgba(0,0,0,0.3)] flex items-center justify-center transition-all active:scale-90 hover:scale-105 bioluminescent-glow">
+            <span class="material-symbols-outlined text-3xl">shopping_basket</span>
+            <span id="mobile-cart-count" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 animate-pulse">0</span>
         </button>
     </div>
 
     <!-- Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-2 pb-safe border-t border-slate-200 dark:border-slate-800 z-50 h-16">
-        <a class="flex flex-col items-center justify-center text-slate-400" href="index.html">
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white dark:bg-slate-900 px-2 pb-safe border-t border-slate-200 dark:border-slate-800 z-50 h-16">
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="index.html">
             <span class="material-symbols-outlined">home</span>
-            <span class="text-[10px] uppercase font-bold mt-1" data-i18n="nav_home">Home</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_home">Home</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-primary dark:text-blue-300" href="menu.html">
+        <a class="flex flex-col items-center justify-center text-primary dark:text-abyss-primary border-t-2 border-primary dark:border-abyss-primary pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="menu.html">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
-            <span class="text-[10px] uppercase font-bold mt-1" data-i18n="nav_menu">Menu</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_menu">Menu</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-slate-400" href="contact.html">
-            <span class="material-symbols-outlined">alternate_email</span>
-            <span class="text-[10px] uppercase font-bold mt-1" data-i18n="nav_contact">Contact</span>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="reservation.html">
+            <span class="material-symbols-outlined">event_seat</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_orders">Reserve</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="contact.html">
+            <span class="material-symbols-outlined">location_on</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_contact">Contact</span>
         </a>
     </nav>
 
@@ -411,6 +421,8 @@
 
         function sendWhatsAppOrder() {
             if (cart.length === 0) return;
+
+            // Demo Modal will be handled by openWhatsApp in data.js
             
             const currentLang = localStorage.getItem('preferred_language') || 'en';
             const t = translations[currentLang];
@@ -428,12 +440,86 @@
 
             message += `------------------\n`;
             message += `*${t.cart_total}: ${total} ${t.price_currency}*`;
+            
+            // Save to local logs for Admin
+            const orderData = {
+                id: 'ORD-' + Date.now(),
+                timestamp: new Date().toISOString(),
+                items: cart,
+                total: total,
+                status: 'pending' // Added status
+            };
+            const orders = JSON.parse(localStorage.getItem('matamkom_orders_logs') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('matamkom_orders_logs', JSON.stringify(orders));
 
             const encodedMsg = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/201234567890?text=${encodedMsg}`; // Placeholder number
-            window.open(whatsappUrl, '_blank');
+            openWhatsApp(message);
         }
+
+        // Process pending add-to-cart from index.html marquee
+        document.addEventListener('DOMContentLoaded', () => {
+            const pendingId = localStorage.getItem('pending_add_to_cart');
+            const shouldOpenCart = localStorage.getItem('open_cart_on_load');
+
+            if (shouldOpenCart) {
+                localStorage.removeItem('open_cart_on_load');
+                setTimeout(() => toggleCart(true), 500);
+            }
+
+            if (pendingId) {
+                localStorage.removeItem('pending_add_to_cart');
+                const id = parseInt(pendingId);
+                
+                // Allow time for language and menu data to initialize
+                setTimeout(() => {
+                    const data = getMenuData();
+                    const item = data.find(i => i.id === id);
+                    if (item) {
+                        const currentLang = localStorage.getItem('preferred_language') || 'en';
+                        const t = translations[currentLang];
+                        
+                        // Set default options to match display
+                        selectedOptions = {
+                            method: t.method_grilled,
+                            size: t.size_medium
+                        };
+                        
+                        addToOrder(id);
+                    }
+                }, 800);
+            }
+        });
+
+        // Extend updateCartUI to handle header badge
+        const originalUpdateCartUI = updateCartUI;
+        updateCartUI = function() {
+            originalUpdateCartUI();
+            const headerBadge = document.getElementById('cart-badge');
+            if (headerBadge) {
+                if (cart.length > 0) {
+                    headerBadge.classList.remove('hidden');
+                    headerBadge.innerText = cart.length;
+                } else {
+                    headerBadge.classList.add('hidden');
+                }
+            }
+        };
     </script>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 full-width py-12 transition-colors mb-16 md:mb-0">
+        <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto text-center">
+            <span class="font-bold text-primary dark:text-abyss-primary font-h1 text-2xl tracking-widest" data-i18n="brand_name">MATAMKOM</span>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-secondary transition-colors" href="#" data-i18n="footer_sustainability">Sustainability</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-secondary transition-colors" href="#" data-i18n="footer_careers">Careers</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-secondary transition-colors" href="#" data-i18n="footer_privacy">Privacy</a>
+                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-secondary transition-colors" href="#" data-i18n="footer_terms">Terms</a>
+            </div>
+            <p class="text-xs font-['Epilogue'] tracking-normal text-slate-400" data-i18n="footer_copy">© 2026 MATAMKOM. PRECISELY SOURCED.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

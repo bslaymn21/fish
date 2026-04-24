@@ -41,7 +41,7 @@
         
         <div class="absolute bottom-12 flex flex-col items-center gap-xs">
             <span class="material-symbols-outlined text-primary opacity-60 animate-pulse">restaurant</span>
-            <span class="font-label-caps text-[10px] text-slate-400 tracking-widest uppercase">Est. 2024</span>
+            <span class="font-label-caps text-[10px] text-slate-400 tracking-widest uppercase">Est. 2026</span>
         </div>
     </div>
     `;
@@ -62,11 +62,11 @@
     window.addEventListener('load', () => {
         const loader = document.getElementById('site-preloader');
         if (loader) {
-            // Artificial delay for smooth feel
+            // Reduced artificial delay for snappier feel
             setTimeout(() => {
                 loader.classList.add('fade-out');
                 document.body.style.overflow = '';
-            }, 800);
+            }, 300);
         }
     });
 
@@ -82,7 +82,7 @@
             !href.startsWith('#') && 
             !href.startsWith('mailto:') && 
             !href.startsWith('tel:') && 
-            !href.startsWith('http') && // Assuming internal links are relative
+            !href.startsWith('http') && 
             !link.hasAttribute('download') &&
             link.target !== '_blank') {
             
@@ -90,16 +90,15 @@
             const loader = document.getElementById('site-preloader');
             if (loader) {
                 loader.classList.remove('fade-out');
-                // Restart animation if needed (by re-adding)
                 const bar = loader.querySelector('.preloader-progress-bar');
                 bar.classList.remove('animate-loading');
-                void bar.offsetWidth; // Trigger reflow
+                void bar.offsetWidth; 
                 bar.classList.add('animate-loading');
             }
             
             setTimeout(() => {
                 window.location.href = href;
-            }, 500); // Small delay to show the "leaving" animation
+            }, 150); // Faster transition
         }
     });
 })();
