@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Experience the freshest Mediterranean seafood at MATAMKOM Alexandria. High-quality grilled fish, platters, and premium seafood dishes with stunning views." />
-    <meta name="keywords" content="Seafood Alexandria, Grilled Fish, Fresh Seafood, Matamkom restaurant, Mediterranean cuisine, Fish Restaurant Alexandria" />
-    <title>MATAMKOM | Fresh Catch of the Day</title>
+    <meta name="description" content="استمتع بأشهى المأكولات البحرية المتوسطية في مطعمكم بالإسكندرية. سمك مشوي عالي الجودة، أطباق متنوعة، وإطلالة مميزة." />
+    <meta name="keywords" content="سمك الإسكندرية، سمك مشوي، مأكولات بحرية طازجة، مطعم مطعمكم، مأكولات متوسطية" />
+    <title>مطعمكم | صيد اليوم الطازج</title>
 
     <!-- Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;600&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;600&amp;family=Noto+Kufi+Arabic:wght@400;700&amp;family=Noto+Sans+Arabic:wght@400;700&amp;display=swap"
         rel="stylesheet" />
 
     <!-- Material Symbols -->
@@ -32,29 +32,56 @@
     <script src="./js/data.js"></script>
 </head>
 
-<body class="font-body-md text-on-background selection:bg-primary-container selection:text-white">
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-white rtl-mode">
+    <!-- Preloader (Static for speed) -->
+    <div id="site-preloader" class="preloader-container">
+        <!-- Background Gradient -->
+        <div class="absolute inset-0 z-0 opacity-40 pointer-events-none preloader-gradient"></div>
+        
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="mb-lg animate-swim">
+                <div class="animate-glow">
+                    <svg class="text-primary" fill="none" height="120" viewBox="0 0 200 100" width="180" xmlns="http://www.w3.org/2000/svg">
+                        <path class="fish-body" d="M10 50C10 50 40 10 90 10C140 10 180 50 180 50C180 50 140 90 90 90C40 90 10 50 10 50Z" stroke="currentColor" stroke-width="2"></path>
+                        <path class="animate-tail" d="M10 50L-20 20V80L10 50Z" fill="currentColor" opacity="0.6"></path>
+                        <circle cx="150" cy="45" fill="currentColor" r="3"></circle>
+                        <path class="animate-fin" d="M90 35C90 35 110 20 120 35" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+                        <path class="animate-fin" d="M90 65C90 65 110 80 120 65" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="w-full text-center space-y-md">
+                <h1 class="font-label-caps text-label-caps text-primary tracking-[0.3em] uppercase" data-i18n="loader_title">MATAMKOM</h1>
+                <p class="font-body-md text-sm text-slate-500 italic opacity-60" data-i18n="loader_desc">نجهز لك صيد اليوم الطازج...</p>
+                <div class="preloader-progress mx-auto">
+                    <div class="preloader-progress-bar animate-loading"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- TopAppBar -->
     <header
         class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
         <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
             <div class="flex items-center gap-4">
                 <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1"
-                    data-i18n="brand_name">MATAMKOM</span>
+                    data-i18n="brand_name">مطعمكم</span>
             </div>
             <nav class="hidden md:flex gap-md items-center">
                 <a class="text-primary dark:text-abyss-primary font-bold font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
-                    href="index.html" data-i18n="nav_home">Home</a>
+                    href="index.html" data-i18n="nav_home">الرئيسية</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
-                    href="menu.html" data-i18n="nav_menu">Menu</a>
+                    href="menu.html" data-i18n="nav_menu">المنيو</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
-                    href="reservation.html" data-i18n="nav_orders">Reservations</a>
+                    href="reservation.html" data-i18n="nav_orders">حجز طاولة</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
-                    href="contact.html" data-i18n="nav_contact">Contact Us</a>
+                    href="contact.html" data-i18n="nav_contact">اتصل بنا</a>
             </nav>
             <div class="flex items-center gap-3">
                 <button onclick="toggleLanguage()"
                     class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant"
-                    title="Change Language">
+                    title="تغيير اللغة">
                     <span class="material-symbols-outlined">translate</span>
                 </button>
                 <button id="theme-toggle"
@@ -75,32 +102,29 @@
         <!-- Hero Section -->
         <section class="relative w-full h-[520px] flex items-center overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <img alt="Fresh fish platter" class="w-full h-full object-cover animate-ken-burns"
+                <img alt="طبق سمك طازج" class="w-full h-full object-cover animate-ken-burns"
                     src="https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=2070&auto=format&fit=crop" />
                 <div
                     class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-abyss-surface/90 via-abyss-surface/40 to-transparent">
                 </div>
             </div>
             <div class="relative z-10 container mx-auto px-6 md:px-xl">
-                <div class="max-w-2xl space-y-lg">
+                <div class="max-w-2xl space-y-lg text-right">
                     <div
                         class="inline-flex items-center gap-3 px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full shadow-lg">
                         <span
                             class="font-label-caps text-white text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold"
-                            data-i18n="hero_tagline">Locally Sourced Daily</span>
+                            data-i18n="hero_tagline">صيد محلي يومي</span>
                     </div>
-                    <h1 class="font-h1 text-h1 text-white leading-[1.0] lg:text-[72px]" data-i18n="hero_title">Fresh
-                        Catch <br />of the Day</h1>
-                    <p class="font-body-lg text-body-lg text-white/90 max-w-lg" data-i18n="hero_desc">From the morning
-                        tides to your evening table. Experience the purest flavors of the ocean, prepared with culinary
-                        precision.</p>
+                    <h1 class="font-h1 text-h1 text-white leading-[1.0] lg:text-[72px]" data-i18n="hero_title">صيد اليوم <br/>الطازج</h1>
+                    <p class="font-body-lg text-body-lg text-white/90 max-w-lg" data-i18n="hero_desc">من أمواج الصباح إلى مائدتك. استمتع بأفضل المأكولات البحرية المصرية، المحضرة حسب ذوقك الخاص.</p>
                     <div class="pt-4 flex flex-wrap gap-4">
                         <a href="menu.html"
                             class="bg-[#003366] text-white px-8 md:px-10 py-4 font-label-caps tracking-[0.2em] hover:bg-secondary inline-block shadow-lg rounded-full transition-all text-sm md:text-base text-center"
-                            data-i18n="nav_menu">Our Menu</a>
+                            data-i18n="nav_menu">المنيو الخاص بنا</a>
                         <a href="reservation.html"
                             class="bg-secondary text-white px-8 md:px-10 py-4 font-label-caps tracking-[0.2em] hover:bg-primary inline-block shadow-lg rounded-full transition-all text-sm md:text-base text-center"
-                            data-i18n="hero_book_btn">Book a Table</a>
+                            data-i18n="hero_book_btn">احجز ترابيزة</a>
                     </div>
                 </div>
             </div>
@@ -110,12 +134,6 @@
                 localStorage.setItem('pending_add_to_cart', id);
                 window.location.href = 'menu.html';
             }
-
-            // Initialize language and theme
-            document.addEventListener('DOMContentLoaded', () => {
-                const currentLang = localStorage.getItem('preferred_language') || 'en';
-                applyLanguage(currentLang);
-            });
         </script>
 
         <!-- Signature Bento Grid -->
@@ -123,9 +141,8 @@
             <div class="container mx-auto px-6 md:px-xl">
                 <div class="text-center mb-xl">
                     <h3 class="font-label-caps text-on-tertiary-container dark:text-abyss-primary opacity-80 mb-4"
-                        data-i18n="home_seasonal_favorites">SEASONAL FAVORITES</h3>
-                    <h2 class="font-h2 text-headline-lg text-primary dark:text-white" data-i18n="home_from_kitchen">From
-                        the Kitchen</h2>
+                        data-i18n="home_seasonal_favorites">ترشيحاتنا لك</h3>
+                    <h2 class="font-h2 text-headline-lg text-primary dark:text-white" data-i18n="home_from_kitchen">أطباقنا المميزة</h2>
                 </div>
             </div> <!-- Close container after the info text -->
             
@@ -137,120 +154,120 @@
                             <img alt="Grilled Sea Bass" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(4)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(4)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Grilled Sea Bass</h4>
+                                <h4 class="text-white font-bold text-lg">سمك مشوي سنجاري</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="King Salmon" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(3)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(3)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">King Salmon</h4>
+                                <h4 class="text-white font-bold text-lg">سلمون نرويجي</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="Baked Barramundi" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Baked Barramundi</h4>
+                                <h4 class="text-white font-bold text-lg">بوري مشوي ملح</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="Grilled Tilapia" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Grilled Tilapia</h4>
+                                <h4 class="text-white font-bold text-lg">بلطي مشوي بالردة</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="Mediterranean Bream" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Mediterranean Bream</h4>
+                                <h4 class="text-white font-bold text-lg">دنيس زيت وليمون</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="Pan-Seared Trout" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Pan-Seared Trout</h4>
+                                <h4 class="text-white font-bold text-lg">سمك تروت مقلي</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="Fried Red Snapper" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Fried Red Snapper</h4>
+                                <h4 class="text-white font-bold text-lg">وقار مقلي</h4>
                             </div>
                         </div>
                         <div class="marquee-item group overflow-hidden">
                             <img alt="Crispy Red Snapper" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Crispy Red Snapper</h4>
+                                <h4 class="text-white font-bold text-lg">سمك مقرمش</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="Herb-Crusted Bass" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Herb-Crusted Bass</h4>
+                                <h4 class="text-white font-bold text-lg">قاروص بالأعشاب</h4>
                             </div>
                         </div>
                         <div class="marquee-item group">
                             <img alt="Smoked Mackerel" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1501595091296-3aa970afb3ff?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Smoked Mackerel</h4>
+                                <h4 class="text-white font-bold text-lg">ماكريل مدخن</h4>
                             </div>
                         </div>
                         <div class="marquee-item group overflow-hidden">
                             <img alt="Steamed Cod Fillet" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(1)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Steamed Cod Fillet</h4>
+                                <h4 class="text-white font-bold text-lg">فيليه كود مطهو</h4>
                             </div>
                         </div>
                         <div class="marquee-item group overflow-hidden">
                             <img alt="Grilled Seafood Platter" class="w-full h-full object-cover"
                                 src="https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&q=60&w=600" />
                             <span class="price-badge">180 <span data-i18n="price_currency">EGP</span></span>
-                            <button onclick="quickAdd(6)" class="quick-add-btn" data-i18n="btn_add_to_order">ADD TO ORDER</button>
+                            <button onclick="quickAdd(6)" class="quick-add-btn" data-i18n="btn_add_to_order">أضف للطلب</button>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                                <h4 class="text-white font-bold text-lg">Seafood Platter</h4>
+                                <h4 class="text-white font-bold text-lg">طبق مأكولات بحرية</h4>
                             </div>
                         </div>
 
@@ -386,18 +403,18 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
                     <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
                         <div class="value-icon"><span class="material-symbols-outlined">set_meal</span></div>
-                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_fresh_title">Daily Fresh</h3>
-                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_fresh_desc">Hand-picked seafood every morning.</p>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_fresh_title">سمك طازجة يومياً</h3>
+                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_fresh_desc">بننقي السمك بنفسنا كل يوم الصبح.</p>
                     </div>
                     <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
                         <div class="value-icon"><span class="material-symbols-outlined">restaurant</span></div>
-                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_custom_title">Cooked Your Way</h3>
-                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_custom_desc">Grilled, Fried, or Singari.</p>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_custom_title">تجهيز حسب طلبك</h3>
+                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_custom_desc">مشوي، مقلي، أو سنجاري.</p>
                     </div>
                     <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
                         <div class="value-icon"><span class="material-symbols-outlined">delivery_dining</span></div>
-                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_speed_title">Fast Delivery</h3>
-                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_speed_desc">Hot and fresh to your door.</p>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white" data-i18n="why_speed_title">توصيل سريع</h3>
+                        <p class="text-slate-500 dark:text-slate-400" data-i18n="why_speed_desc">طلبك هيوصلك سخن وطازة لحد باب البيت.</p>
                     </div>
                 </div>
             </div>
@@ -426,17 +443,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="review-card">
                         <div class="star-rating">⭐⭐⭐⭐⭐</div>
-                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_1_text">"Best seafood in town! The fish is incredibly fresh."</p>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_1_text">"أفضل مطعم سمك جربته! السمك طازة جداً والتتبيلة تحفة."</p>
                         <p class="font-bold text-sm text-primary dark:text-secondary">— أحمد محمد</p>
                     </div>
                     <div class="review-card">
                         <div class="star-rating">⭐⭐⭐⭐⭐</div>
-                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_2_text">"Fast delivery and great taste. Highly recommended!"</p>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_2_text">"توصيل سريع وأكل يفتح النفس. بجد تسلم إيديكم."</p>
                         <p class="font-bold text-sm text-primary dark:text-secondary">— مريم علي</p>
                     </div>
                     <div class="review-card">
                         <div class="star-rating">⭐⭐⭐⭐⭐</div>
-                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_3_text">"Authentic taste and professional service."</p>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4" data-i18n="review_3_text">"طعم أصلي وخدمة ممتازة، فعلاً وجهة مثالية لعشاق السمك."</p>
                         <p class="font-bold text-sm text-primary dark:text-secondary">— هاني يوسف</p>
                     </div>
                 </div>
@@ -447,16 +464,15 @@
         <section class="py-xl bg-surface">
             <div class="container mx-auto px-6 md:px-xl">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
-                    <div class="lg:col-span-5 space-y-md">
-                        <h2 class="font-h2 text-h2 text-primary border-s-4 border-secondary ps-6"
-                            data-i18n="story_title">Our Story</h2>
-                        <p class="font-body-lg text-xl text-slate-700 dark:text-white italic leading-relaxed" data-i18n="story_quote">"The
-                            secret of great seafood is simplicity and freshness."</p>
-                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_1">At Matamkom, we take pride in being your primary destination for local seafood lovers. We started with a simple vision: to bring the freshest catch of the day directly to your table with the authentic taste you know and love.</p>
-                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_2">We believe in quality over everything. Whether you're dining in with your family or ordering online for a cozy night, we guarantee a professional service and a taste that reflects the true essence of Egyptian coastal cooking.</p>
+                    <div class="lg:col-span-5 space-y-md text-right">
+                        <h2 class="font-h2 text-h2 text-primary border-r-4 border-secondary pr-6"
+                            data-i18n="story_title">قصتنا</h2>
+                        <p class="font-body-lg text-xl text-slate-700 dark:text-white italic leading-relaxed" data-i18n="story_quote">"سر السمك الحلو في بساطته ونضافته."</p>
+                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_1">في مطعمكم، بنفخر إننا نكون وجهتكم الأولى لعشاق السمك والفسفور. بدأنا برؤية بسيطة: نوصل صيد اليوم الطازج لمائدتكم بالنفس المصري الأصيل اللي بتحبوه.</p>
+                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_2">الجودة هي أساس كل حاجة بنعملها. سواء كنت بتنورنا في المطعم مع عيلتك أو بتطلب أونلاين لغدوة رايقة، بنضمن لك خدمة احترافية وطعم يعكس أصول الأكل البحري المصري.</p>
                         <div class="pt-base">
                             <a class="font-label-caps text-secondary border-b-2 border-secondary pb-1 hover:text-primary-container hover:border-primary-container transition-colors"
-                                href="menu.html" data-i18n="btn_story_menu">SEE FULL MENU</a>
+                                href="menu.html" data-i18n="btn_story_menu">تصفح المنيو الكامل</a>
                         </div>
                     </div>
                     <div class="lg:col-span-7 grid grid-cols-2 gap-4">
@@ -484,18 +500,7 @@
     <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 full-width py-12">
         <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto text-center">
             <span class="font-bold text-[#003366] dark:text-blue-100 font-h1 text-2xl tracking-widest"
-                data-i18n="brand_name">MATAMKOM</span>
-            <div class="flex flex-wrap justify-center gap-8">
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
-                    href="#" data-i18n="footer_sustainability">Sustainability</a>
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
-                    href="#" data-i18n="footer_careers">Careers</a>
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
-                    href="#" data-i18n="footer_privacy">Privacy</a>
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors"
-                    href="#" data-i18n="footer_terms">Terms</a>
-            </div>
-            <p class="text-xs font-['Epilogue'] tracking-normal text-slate-500" data-i18n="footer_copy">© 2026 MATAMKOM. PRECISELY SOURCED.</p>
+                data-i18n="brand_name">مطعمكم</span>
             <div class="mt-4 opacity-30 hover:opacity-100 transition-opacity">
                 <a href="admin/index.html" class="text-[9px] uppercase tracking-widest text-slate-500 hover:text-primary dark:hover:text-white" data-i18n="admin_panel_link">Go to Admin Dashboard</a>
             </div>

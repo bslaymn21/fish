@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -7,7 +7,7 @@
     <meta name="keywords" content="Matamkom contact, Seafood restaurant phone Alexandria, Directions to Matamkom" />
     <title>MATAMKOM | Contact Us</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;family=Noto+Kufi+Arabic:wght@400;700&amp;family=Noto+Sans+Arabic:wght@400;700&amp;display=swap" rel="stylesheet"/>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
@@ -22,22 +22,22 @@
     <script src="./js/preloader.js"></script>
     <script src="./js/data.js"></script>
 </head>
-<body class="font-body-md text-on-surface dark:bg-slate-950 dark:text-slate-200 antialiased transition-colors">
+<body class="font-body-md text-on-surface dark:bg-slate-950 dark:text-slate-200 antialiased transition-colors rtl-mode">
     <!-- TopAppBar -->
     <header class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
         <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
             <div class="flex items-center gap-4">
-                <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1" data-i18n="brand_name">MATAMKOM</span>
+                <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1" data-i18n="brand_name">مطعمكم</span>
             </div>
             <nav class="hidden md:flex gap-md items-center">
                 <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
-                    href="index.html" data-i18n="nav_home">Home</a>
+                    href="index.html" data-i18n="nav_home">الرئيسية</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
-                    href="menu.html" data-i18n="nav_menu">Menu</a>
+                    href="menu.html" data-i18n="nav_menu">المنيو</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
-                    href="reservation.html" data-i18n="nav_orders">Reservations</a>
+                    href="reservation.html" data-i18n="nav_orders">حجز طاولة</a>
                 <a class="text-primary dark:text-abyss-primary font-bold font-label-caps hover:text-secondary dark:hover:text-abyss-secondary transition-colors duration-200"
-                    href="contact.html" data-i18n="nav_contact">Contact Us</a>
+                    href="contact.html" data-i18n="nav_contact">اتصل بنا</a>
             </nav>
             <div class="flex items-center gap-3">
                 <button onclick="toggleLanguage()"
@@ -62,8 +62,8 @@
     <main class="max-w-7xl mx-auto px-6 py-xl pb-32">
         <!-- Hero -->
         <div class="mb-16 text-center animate-fade-in">
-            <h1 class="font-h1 text-4xl md:text-6xl text-primary dark:text-white mb-6" data-i18n="contact_title">Contact Us</h1>
-            <p class="font-body-lg text-lg md:text-xl text-slate-500 dark:text-abyss-on-variant max-w-2xl mx-auto" data-i18n="contact_subtitle">We'd love to hear from you. Reach out through any of the channels below.</p>
+            <h1 class="font-h1 text-4xl md:text-6xl text-primary dark:text-white mb-6" data-i18n="contact_title">اتصل بنا</h1>
+            <p class="font-body-lg text-lg md:text-xl text-slate-500 dark:text-abyss-on-variant max-w-2xl mx-auto" data-i18n="contact_subtitle">يسعدنا تواصلك معنا. يمكنك الوصول إلينا عبر القنوات الموضحة أدناه.</p>
         </div>
 
         <!-- Primary Actions: Phone & WhatsApp -->
@@ -77,12 +77,12 @@
                     <div class="w-16 h-16 whatsapp-gradient text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/20">
                         <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">chat</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-primary dark:text-white mb-2" data-i18n="contact_whatsapp_title">Message us on WhatsApp</h3>
+                    <h3 class="text-2xl font-bold text-primary dark:text-white mb-2" data-i18n="contact_whatsapp_title">راسلنا عبر واتساب</h3>
                     <p class="text-sm text-green-600 dark:text-green-400 font-bold mb-8 flex items-center gap-2">
                         <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        <span data-i18n="contact_trust_signal">We reply in minutes</span>
+                        <span data-i18n="contact_trust_signal">نرد خلال دقائق</span>
                     </p>
-                    <a href="#" id="wa-contact-link" target="_blank" class="w-full bg-slate-900 dark:bg-white text-white dark:text-primary py-4 rounded-2xl font-bold tracking-widest hover:bg-secondary dark:hover:bg-abyss-secondary transition-all text-center" data-i18n="contact_whatsapp_btn">START CONVERSATION</a>
+                    <a href="#" id="wa-contact-link" target="_blank" class="w-full bg-slate-900 dark:bg-white text-white dark:text-primary py-4 rounded-2xl font-bold tracking-widest hover:bg-secondary dark:hover:bg-abyss-secondary transition-all text-center" data-i18n="contact_whatsapp_btn">ابدأ المحادثة</a>
                 </div>
             </div>
 
@@ -189,13 +189,6 @@
     <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 full-width py-12 transition-colors">
         <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto text-center">
             <span class="font-bold text-[#003366] dark:text-blue-100 font-h1 text-2xl tracking-widest" data-i18n="brand_name">MATAMKOM</span>
-            <div class="flex flex-wrap justify-center gap-8">
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_sustainability">Sustainability</a>
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_careers">Careers</a>
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_privacy">Privacy</a>
-                <a class="text-slate-500 dark:text-slate-400 font-body-md text-sm hover:text-orange-500 transition-colors" href="#" data-i18n="footer_terms">Terms</a>
-            </div>
-            <p class="text-xs font-['Epilogue'] tracking-normal text-slate-400" data-i18n="footer_copy">© 2026 MATAMKOM. PRECISELY SOURCED.</p>
         </div>
     </footer>
 

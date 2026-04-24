@@ -1,10 +1,8 @@
-// Admin Dashboard Logic for Matamkom - Premium SaaS Edition
-if (sessionStorage.getItem('admin_authenticated') !== 'true') {
-    window.location.href = 'login.html';
-}
+// Admin Dashboard Logic for Matamkom - Premium SaaS Edition - DEMO MODE (No Login Required)
 
 let currentData = getMenuData();
 let performanceChart = null;
+let statsMainChart = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initial Setup
@@ -32,8 +30,34 @@ document.addEventListener('DOMContentLoaded', () => {
 // Sidebar & Mobile Toggle
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
     if (sidebar) {
-        sidebar.classList.toggle('translate-x-full');
+        const isHidden = sidebar.classList.contains('translate-x-full');
+        if (isHidden) {
+            sidebar.classList.remove('translate-x-full');
+            if (overlay) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            }
+        } else {
+            sidebar.classList.add('translate-x-full');
+            if (overlay) {
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+    }
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    if (sidebar && !sidebar.classList.contains('translate-x-full')) {
+        sidebar.classList.add('translate-x-full');
+        if (overlay) {
+            overlay.classList.remove('opacity-100');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+        }
     }
 }
 
@@ -96,7 +120,7 @@ function switchTab(tabName) {
 
     // Auto-close sidebar on mobile
     if (window.innerWidth < 1024) {
-        toggleSidebar();
+        closeSidebar();
     }
 }
 
@@ -170,8 +194,31 @@ function renderOrders() {
         </tr>
     `).join('');
     
-    // In a real app we'd clear tbody, but for demo we append to show "growth"
     tbody.innerHTML = newHtml + tbody.innerHTML; 
+
+    // Render Mobile Cards
+    const mobileList = document.getElementById('orders-mobile-list');
+    if (mobileList) {
+        mobileList.innerHTML = logs.map(log => `
+            <div class="p-4 space-y-3">
+                <div class="flex justify-between items-center">
+                    <span class="font-black text-secondary">#${log.id.toString().slice(-4)}</span>
+                    ${getStatusBadge(log.status || 'pending')}
+                </div>
+                <div>
+                    <p class="font-bold text-sm">${log.userName || 'زبون خارجي'}</p>
+                    <p class="text-[11px] text-slate-400 truncate">${log.items.map(i => `${i.quantity}x ${i.name}`).join('، ')}</p>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="font-black text-sm">${log.total} جم</span>
+                    <div class="flex gap-2">
+                        <button onclick="updateLogStatus('ord', '${log.id}', 'preparing')" class="text-[10px] font-black bg-primary text-white px-3 py-2 rounded-lg">تأكيد</button>
+                        <button onclick="deleteLog('ord', '${log.id}')" class="p-2 bg-slate-100 dark:bg-white/10 rounded-lg text-slate-400"><span class="material-symbols-outlined text-xs">delete</span></button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
 }
 
 function renderReservations() {
@@ -197,6 +244,27 @@ function renderReservations() {
     `).join('');
     
     tbody.innerHTML = newHtml + tbody.innerHTML;
+
+    // Render Mobile Cards
+    const mobileList = document.getElementById('res-mobile-list');
+    if (mobileList) {
+        mobileList.innerHTML = logs.map(log => `
+            <div class="p-4 space-y-3">
+                <div class="flex justify-between items-center">
+                    <p class="font-bold text-sm">${log.name}</p>
+                    ${getStatusBadge(log.status || 'pending')}
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-400">
+                    <span>${log.phone}</span>
+                    <span class="font-black text-secondary">${log.guests} أفراد</span>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="text-[10px] font-bold text-slate-500">${log.dateTime}</span>
+                    <button onclick="updateLogStatus('res', '${log.id}', 'confirmed')" class="text-[10px] font-black bg-primary text-white px-4 py-2 rounded-lg">تأكيد الحجز</button>
+                </div>
+            </div>
+        `).join('');
+    }
 }
 
 function updateLogStatus(type, id, newStatus) {
@@ -271,51 +339,97 @@ function showEmptyState(container, message) {
 
 // Chart Logic (Enhanced Palette)
 function initChart() {
-    const canvas = document.getElementById('performanceChart');
-    if (!canvas) return;
-    
-    if (performanceChart) performanceChart.destroy();
-    
     const isDark = document.documentElement.classList.contains('dark');
     const primaryColor = isDark ? '#b1c8e9' : '#001e40';
     const secondaryColor = isDark ? '#ffb59c' : '#a43c12';
-    
-    const ctx = canvas.getContext('2d');
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, primaryColor + '33'); // 20% opacity
-    gradient.addColorStop(1, primaryColor + '00'); // 0% opacity
 
-    const labels = ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
-    const dataMock = [18, 25, 15, 30, 22, 45, 60];
+    // 1. Dashboard Chart
+    const dashCanvas = document.getElementById('performanceChart');
+    if (dashCanvas) {
+        if (performanceChart) performanceChart.destroy();
+        const ctx = dashCanvas.getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, primaryColor + '33');
+        gradient.addColorStop(1, primaryColor + '00');
 
-    performanceChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'المبيعات',
-                data: dataMock,
-                borderColor: primaryColor,
-                borderWidth: 4,
-                pointBackgroundColor: primaryColor,
-                pointBorderColor: '#fff',
-                pointBorderWidth: 2,
-                pointRadius: 5,
-                fill: true,
-                backgroundColor: gradient,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: { display: false, beginAtZero: true },
-                x: { grid: { display: false }, ticks: { font: { family: 'Noto Kufi Arabic', size: 10 } } }
+        performanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'],
+                datasets: [{
+                    label: 'المبيعات',
+                    data: [18, 25, 15, 30, 22, 45, 60],
+                    borderColor: primaryColor,
+                    borderWidth: 4,
+                    pointBackgroundColor: primaryColor,
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5,
+                    fill: true,
+                    backgroundColor: gradient,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { display: false, beginAtZero: true },
+                    x: { grid: { display: false }, ticks: { font: { family: 'Noto Kufi Arabic', size: 10 } } }
+                }
             }
-        }
-    });
+        });
+    }
+
+    // 2. Stats Page Main Chart
+    const statsCanvas = document.getElementById('statsMainChart');
+    if (statsCanvas) {
+        if (statsMainChart) statsMainChart.destroy();
+        const ctx = statsCanvas.getContext('2d');
+        
+        statsMainChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['الأسبوع 1', 'الأسبوع 2', 'الأسبوع 3', 'الأسبوع 4'],
+                datasets: [
+                    {
+                        label: 'المبيعات',
+                        data: [4200, 3800, 5100, 6200],
+                        backgroundColor: primaryColor,
+                        borderRadius: 12,
+                    },
+                    {
+                        label: 'الحجوزات',
+                        data: [2100, 1900, 2800, 3100],
+                        backgroundColor: secondaryColor + '88',
+                        borderRadius: 12,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { 
+                        position: 'bottom',
+                        labels: { font: { family: 'Noto Kufi Arabic', size: 11 }, usePointStyle: true }
+                    } 
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        grid: { color: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' },
+                        ticks: { font: { family: 'Work Sans', size: 10 } }
+                    },
+                    x: { 
+                        grid: { display: false },
+                        ticks: { font: { family: 'Noto Kufi Arabic', size: 10 } }
+                    }
+                }
+            }
+        });
+    }
 }
 
 // Standard CRUD & Logic...

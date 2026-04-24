@@ -1,13 +1,8 @@
 // Language Selector Logic for Matamkom
 
 document.addEventListener('DOMContentLoaded', () => {
-    const preferredLang = localStorage.getItem('preferred_language');
-    
-    if (!preferredLang) {
-        showLanguageModal();
-    } else {
-        applyLanguage(preferredLang);
-    }
+    const preferredLang = localStorage.getItem('preferred_language') || 'ar';
+    applyLanguage(preferredLang);
 });
 
 function showLanguageModal() {
@@ -52,18 +47,16 @@ function setLanguage(lang) {
 }
 
 function applyLanguage(lang) {
-    // Inject Dynamic Settings from Admin
+    // Inject Dynamic Settings from Admin (if available)
     if (typeof getSiteSettings === 'function') {
         const settings = getSiteSettings();
         if (translations.en) {
-            translations.en.contact_address_detail = settings.address_en;
-            translations.en.contact_time_lunch = settings.hours_en;
-            translations.en.contact_time_dinner = ""; // Simplify
+            translations.en.contact_address_detail = settings.address_en || translations.en.contact_address_detail;
+            translations.en.contact_time_lunch = settings.hours_en || translations.en.contact_time_lunch;
         }
         if (translations.ar) {
-            translations.ar.contact_address_detail = settings.address_ar;
-            translations.ar.contact_time_lunch = settings.hours_ar;
-            translations.ar.contact_time_dinner = ""; // Simplify
+            translations.ar.contact_address_detail = settings.address_ar || translations.ar.contact_address_detail;
+            translations.ar.contact_time_lunch = settings.hours_ar || translations.ar.contact_time_lunch;
         }
     }
 
@@ -111,7 +104,7 @@ function translateElement(parent, lang) {
 
 // Toggle function for header button
 function toggleLanguage() {
-    const currentLang = localStorage.getItem('preferred_language') || 'en';
+    const currentLang = localStorage.getItem('preferred_language') || 'ar';
     const newLang = currentLang === 'en' ? 'ar' : 'en';
     setLanguage(newLang);
 }
