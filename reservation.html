@@ -54,11 +54,6 @@
                     data-i18n-title="theme_toggle_dark">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <!-- Desktop Cart -->
-                <button onclick="goToMenuWithCart()" class="hidden md:flex relative p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors items-center justify-center text-slate-500 dark:text-abyss-on-variant">
-                    <span class="material-symbols-outlined">shopping_basket</span>
-                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 hidden">0</span>
-                </button>
             </div>
         </div>
     </header>
@@ -262,10 +257,6 @@
             if(document.getElementById('display-phone-number-card')) document.getElementById('display-phone-number-card').innerText = `+${settings.whatsapp.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, '$1 $2 $3 $4')}`;
         });
 
-        function goToMenuWithCart() {
-            localStorage.setItem('open_cart_on_load', 'true');
-            window.location.href = 'menu.html';
-        }
     </script>
 
     <!-- Footer -->

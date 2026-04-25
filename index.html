@@ -89,11 +89,6 @@
                     data-i18n-title="theme_toggle_dark">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <!-- Desktop Cart -->
-                <button onclick="goToMenuWithCart()" class="hidden md:flex relative p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors items-center justify-center text-slate-500 dark:text-abyss-on-variant">
-                    <span class="material-symbols-outlined">shopping_basket</span>
-                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 hidden">0</span>
-                </button>
             </div>
         </div>
     </header>
@@ -465,7 +460,7 @@
             <div class="container mx-auto px-6 md:px-xl">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
                     <div class="lg:col-span-5 space-y-md text-right">
-                        <h2 class="font-h2 text-h2 text-primary border-r-4 border-secondary pr-6"
+                        <h2 class="font-h2 text-h2 text-primary border-s-4 border-secondary ps-6"
                             data-i18n="story_title">قصتنا</h2>
                         <p class="font-body-lg text-xl text-slate-700 dark:text-white italic leading-relaxed" data-i18n="story_quote">"سر السمك الحلو في بساطته ونضافته."</p>
                         <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_1">في مطعمكم، بنفخر إننا نكون وجهتكم الأولى لعشاق السمك والفسفور. بدأنا برؤية بسيطة: نوصل صيد اليوم الطازج لمائدتكم بالنفس المصري الأصيل اللي بتحبوه.</p>
@@ -505,15 +500,7 @@
                 <a href="admin/index.html" class="text-[9px] uppercase tracking-widest text-slate-500 hover:text-primary dark:hover:text-white" data-i18n="admin_panel_link">Go to Admin Dashboard</a>
             </div>
         </div>
-    </footer>    <!-- Floating Order Button -->
-    <div class="fixed bottom-24 md:bottom-10 right-6 z-[60]">
-        <button onclick="goToMenuWithCart()"
-            class="relative w-16 h-16 bg-primary text-white rounded-full shadow-[0_8px_25px_rgba(0,0,0,0.3)] flex items-center justify-center transition-all active:scale-90 hover:scale-105 bioluminescent-glow">
-            <span class="material-symbols-outlined text-3xl">shopping_basket</span>
-        </button>
-    </div>
-
-    <script>
+    </footer>    <script>
         function goToMenuWithCart() {
             localStorage.setItem('open_cart_on_load', 'true');
             window.location.href = 'menu.html';
