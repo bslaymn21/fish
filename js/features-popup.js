@@ -125,10 +125,15 @@
         }
     });
 
-    // Initialize on DOM ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', buildPopup);
-    } else {
+    // Initialize on DOM ready — retry if body not ready
+    function tryBuild() {
+        if (!document.body) { setTimeout(tryBuild, 50); return; }
         buildPopup();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', tryBuild);
+    } else {
+        tryBuild();
     }
 })();
