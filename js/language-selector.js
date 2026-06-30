@@ -1,7 +1,8 @@
 // Language Selector Logic for Matamkom
 
 document.addEventListener('DOMContentLoaded', () => {
-    const preferredLang = localStorage.getItem('preferred_language') || 'ar';
+    const preferredLang = 'ar';
+    localStorage.setItem('preferred_language', 'ar');
     applyLanguage(preferredLang);
 });
 
@@ -104,7 +105,6 @@ function translateElement(parent, lang) {
 
 // Toggle function for header button
 function toggleLanguage() {
-    const currentLang = localStorage.getItem('preferred_language') || 'ar';
-    const newLang = currentLang === 'en' ? 'ar' : 'en';
-    setLanguage(newLang);
+    // Always stay in Arabic
+    setLanguage('ar');
 }
