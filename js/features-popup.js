@@ -259,7 +259,6 @@
     } else {
       panel.classList.add('open')
       overlay.classList.add('open')
-      badge.classList.add('badge-hidden')
 
       const items = panel.querySelectorAll('.feature-item')
       items.forEach((el, i) => {
