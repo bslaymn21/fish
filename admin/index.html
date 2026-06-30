@@ -765,7 +765,7 @@ function generateQRCode() {
     const container = document.getElementById('qrcode-container');
     if (!container) return;
     container.innerHTML = '';
-    new QRCode(container, { text: window.location.origin + '/menu.html', width: 256, height: 256, colorDark: '#0f172a', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
+    new QRCode(container, { text: window.location.origin + '/index.html', width: 256, height: 256, colorDark: '#0f172a', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
 }
 
 function downloadQRCode() {

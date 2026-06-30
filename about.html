@@ -49,7 +49,6 @@
             </div>
             <nav class="hidden md:flex gap-md items-center">
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="index.html" data-i18n="nav_home">الرئيسية</a>
-                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="menu.html" data-i18n="nav_menu">المنيو</a>
                 <a class="text-primary dark:text-abyss-primary font-bold font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="about.html" data-i18n="nav_about">عن المطعم</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="offers.html" data-i18n="nav_offers">العروض</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="reservation.html" data-i18n="nav_orders">حجز طاولة</a>
@@ -145,7 +144,7 @@
                         <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed">في مطعمكم، بنفخر إننا نكون وجهتكم الأولى لعشاق السمك. بدأنا برؤية بسيطة: نوصل صيد اليوم الطازج لمائدتكم بالنفس المصري الأصيل.</p>
                         <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed">الجودة هي أساس كل حاجة بنعملها. سواء كنت بتنورنا في المطعم مع عيلتك أو بتطلب أونلاين، بنضمن لك خدمة احترافية وطعم يعكس أصول الأكل البحري المصري.</p>
                         <div class="pt-base">
-                            <a class="font-label-caps text-secondary border-b-2 border-secondary pb-1 hover:text-primary-container hover:border-primary-container transition-colors" href="menu.html">تصفح المنيو الكامل</a>
+                            <a class="font-label-caps text-secondary border-b-2 border-secondary pb-1 hover:text-primary-container hover:border-primary-container transition-colors" href="index.html">تصفح المنيو الكامل</a>
                         </div>
                     </div>
                     <div class="lg:col-span-7 grid grid-cols-2 gap-4">
@@ -279,7 +278,7 @@
 
         function quickAdd(id) {
             localStorage.setItem('pending_add_to_cart', id);
-            window.location.href = 'menu.html';
+            window.location.href = 'index.html';
         }
 
         function applySiteSettings() {
@@ -306,10 +305,10 @@
     </footer>
 
     <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white dark:bg-slate-900 px-2 pb-safe border-t border-slate-200 dark:border-slate-800 z-50 h-16">
-        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="index.html"><span class="material-symbols-outlined">home</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_home">Home</span></a>
-        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="menu.html"><span class="material-symbols-outlined">restaurant_menu</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_menu">Menu</span></a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="index.html"><span class="material-symbols-outlined">restaurant_menu</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']">Menu</span></a>
         <a class="flex flex-col items-center justify-center text-primary dark:text-abyss-primary border-t-2 border-primary dark:border-abyss-primary pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="about.html"><span class="material-symbols-outlined">info</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']">About</span></a>
         <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="offers.html"><span class="material-symbols-outlined">local_offer</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']">Offers</span></a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="reservation.html"><span class="material-symbols-outlined">event_seat</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_orders">Reserve</span></a>
         <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="contact.html"><span class="material-symbols-outlined">location_on</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_contact">Contact</span></a>
     </nav>
     <a href="admin/index.html" class="fixed bottom-24 left-6 z-50 group flex items-center gap-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-4 py-3 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 border border-white/10 dark:border-black/5">
