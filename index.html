@@ -294,6 +294,7 @@
         function openModal(id) {
             const data = getMenuData();
             const item = data.find(i => i.id === id);
+            trackAction('view_dish', { dishId: id, name: item?.name_ar || item?.name });
             const currentLang = localStorage.getItem('preferred_language') || 'ar';
             const t = translations[currentLang];
             
@@ -367,6 +368,7 @@
         function addToOrder(id) {
             const data = getMenuData();
             const item = data.find(i => i.id === id);
+            trackAction('add_to_cart', { dishId: id, name: item?.name_ar || item?.name, price: item?.price });
             const currentLang = localStorage.getItem('preferred_language') || 'ar';
             
             const cartItem = {
@@ -443,9 +445,8 @@
 
         function sendWhatsAppOrder() {
             if (cart.length === 0) return;
+            trackAction('order_whatsapp', { items: cart.length, total: cart.reduce((s,i) => s + i.price, 0) });
 
-            // Demo Modal will be handled by openWhatsApp in data.js
-            
             const currentLang = localStorage.getItem('preferred_language') || 'ar';
             const t = translations[currentLang];
             const total = cart.reduce((sum, item) => sum + item.price, 0);

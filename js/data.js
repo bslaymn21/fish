@@ -213,7 +213,41 @@ function getWhatsAppLink(message = "") {
 
 function openWhatsApp(message = "") {
   const url = getWhatsAppLink(message);
-  window.location.href = url;
+  // Demo mode — show developer contact instead of opening WhatsApp
+  showWhatsAppDemoModal();
+}
+
+function showWhatsAppDemoModal() {
+  const existing = document.getElementById('wa-demo-modal');
+  if (existing) { existing.classList.add('active'); return; }
+
+  const backdrop = document.createElement('div');
+  backdrop.id = 'wa-demo-modal';
+  backdrop.className = 'demo-modal-backdrop';
+  backdrop.innerHTML = `
+    <div class="demo-modal">
+      <div class="demo-modal-icon" style="background: #003366;">
+        <span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'FILL' 1;">info</span>
+      </div>
+      <h3 class="text-2xl font-bold mb-4 font-h1" style="color:#003366;">هذا الموقع للتجربة فقط</h3>
+      <p class="text-sm opacity-60 mb-6 leading-relaxed">
+        هذه النسخة هي مجرد <span class="font-bold text-secondary">عرض توضيحي (Demo)</span>
+        <br/><br/>
+        للتواصل مع المطور وطلب موقع احترافي لمشروعك:
+      </p>
+      <div class="text-3xl font-black mb-6 tracking-wider" style="color:#003366;font-family:Epilogue,sans-serif;letter-spacing:2px;">
+        <span class="material-symbols-outlined" style="font-size:24px;vertical-align:middle;">call</span>
+        01004142965
+      </div>
+      <a href="tel:+201004142965" class="demo-btn demo-btn-primary" style="background:#003366;text-decoration:none;display:block;">
+        <span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle;">phone_in_talk</span>
+        اتصل الآن
+      </a>
+      <button onclick="this.closest('.demo-modal-backdrop').classList.remove('active')" class="demo-btn demo-btn-secondary">إغلاق</button>
+    </div>
+  `;
+  document.body.appendChild(backdrop);
+  requestAnimationFrame(() => backdrop.classList.add('active'));
 }
 
 const siteStats = {
@@ -232,7 +266,52 @@ const siteStats = {
   }
 };
 
+// == Super Admin Tracking System ==
+function trackAction(type, data = {}) {
+  const log = JSON.parse(localStorage.getItem('matamku_super_log') || '[]');
+  log.push({
+    type,
+    data,
+    page: window.location.pathname.split('/').pop() || 'index',
+    timestamp: Date.now()
+  });
+  // Keep only last 5000 events
+  if (log.length > 5000) log.splice(0, log.length - 5000);
+  localStorage.setItem('matamku_super_log', JSON.stringify(log));
+}
+
+function getSuperStats() {
+  const log = JSON.parse(localStorage.getItem('matamku_super_log') || '[]');
+  const now = Date.now();
+  const today = new Date(); today.setHours(0,0,0,0);
+  const todayTs = today.getTime();
+  const weekAgo = now - 7 * 86400000;
+
+  const totalVisitors = new Set(log.filter(e => e.type === 'page_view').map(e => e.timestamp + '_' + e.page)).size;
+  const todayVisitors = new Set(log.filter(e => e.type === 'page_view' && e.timestamp >= todayTs).map(e => e.timestamp + '_' + e.page)).size;
+  const todayActions = log.filter(e => e.timestamp >= todayTs).length;
+  const totalActions = log.length;
+
+  const pageViews = {};
+  const actionCounts = {};
+  log.forEach(e => {
+    const page = e.page || 'unknown';
+    if (e.type === 'page_view') pageViews[page] = (pageViews[page] || 0) + 1;
+    actionCounts[e.type] = (actionCounts[e.type] || 0) + 1;
+  });
+
+  const recent = log.slice(-50).reverse().map(e => ({
+    ...e,
+    time: new Date(e.timestamp).toLocaleString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit', day: 'numeric', month: 'short' })
+  }));
+
+  return { totalVisitors, todayVisitors, todayActions, totalActions, pageViews, actionCounts, recent };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Track page view
+  trackAction('page_view', { title: document.title });
+
   const style = document.createElement('style');
   style.textContent = `
     .demo-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }

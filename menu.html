@@ -443,9 +443,8 @@
 
         function sendWhatsAppOrder() {
             if (cart.length === 0) return;
+            trackAction('order_whatsapp', { items: cart.length, total: cart.reduce((s,i) => s + i.price, 0) });
 
-            // Demo Modal will be handled by openWhatsApp in data.js
-            
             const currentLang = localStorage.getItem('preferred_language') || 'ar';
             const t = translations[currentLang];
             const total = cart.reduce((sum, item) => sum + item.price, 0);
