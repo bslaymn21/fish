@@ -386,8 +386,32 @@ function switchTab(name) {
     const pt = document.getElementById('page-title'); if(pt) pt.textContent = titles[name] || name;
     if (name === 'qrcode') generateQRCode();
     if (name === 'reports') renderReports();
+    // Update URL hash without scrolling
+    history.replaceState(null, '', '#content-' + name);
     if (window.innerWidth < 1024) { const s=document.getElementById('sidebar'),o=document.getElementById('sidebar-overlay'); if(s&&!s.classList.contains('translate-x-full')){s.classList.add('translate-x-full');if(o){o.classList.remove('opacity-100');setTimeout(()=>o.classList.add('hidden'),300);}} }
 }
+
+// Auto-switch tab based on URL hash on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#content-')) {
+        const tabName = hash.replace('#content-', '');
+        if (['dashboard','orders','menu','offers','coupons','reports','settings','qrcode'].includes(tabName)) {
+            switchTab(tabName);
+        }
+    }
+});
+
+// Listen for hash changes (for same-page navigation from features popup)
+window.addEventListener('hashchange', function() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#content-')) {
+        const tabName = hash.replace('#content-', '');
+        if (['dashboard','orders','menu','offers','coupons','reports','settings','qrcode'].includes(tabName)) {
+            switchTab(tabName);
+        }
+    }
+});
 
 function updateDashboard() {
     const data = getMenuData();
