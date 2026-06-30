@@ -29,24 +29,19 @@
         return window.location.pathname.indexOf('/admin/') !== -1;
     }
 
-    // ----- Build DOM -----
+    // ----- Build Panel Only (badge is hardcoded in HTML) -----
     function buildPopup() {
-        if (document.getElementById('features-badge')) return;
+        if (document.getElementById('features-panel')) return;
 
         const features = isAdmin() ? ADMIN_FEATURES : MAIN_FEATURES;
 
-        // Badge
-        const badge = document.createElement('div');
-        badge.id = 'features-badge';
-        badge.innerHTML = '<span class="badge-icon">✨</span><span class="badge-text">شاهد المميزات</span>';
-        badge.setAttribute('onclick', 'window.__toggleFeaturesPopup()');
-        document.body.appendChild(badge);
-
         // Overlay
-        const overlay = document.createElement('div');
-        overlay.id = 'features-overlay';
-        overlay.setAttribute('onclick', 'window.__toggleFeaturesPopup()');
-        document.body.appendChild(overlay);
+        if (!document.getElementById('features-overlay')) {
+            const overlay = document.createElement('div');
+            overlay.id = 'features-overlay';
+            overlay.setAttribute('onclick', 'window.__toggleFeaturesPopup()');
+            document.body.appendChild(overlay);
+        }
 
         // Panel
         const panel = document.createElement('div');
