@@ -221,7 +221,7 @@
                 hasResults = true;
 
                 const section = document.createElement('section');
-                const currentLang = localStorage.getItem('preferred_language') || 'en';
+                const currentLang = localStorage.getItem('preferred_language') || 'ar';
                 const catKey = `filter_${cat.toLowerCase().replace(/\s+/g, '')}`;
                 const translatedCat = (translations[currentLang] && translations[currentLang][catKey]) || cat;
 
@@ -297,7 +297,7 @@
         function openModal(id) {
             const data = getMenuData();
             const item = data.find(i => i.id === id);
-            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            const currentLang = localStorage.getItem('preferred_language') || 'ar';
             const t = translations[currentLang];
             
             selectedOptions = { method: t.method_grilled, size: t.size_medium };
@@ -370,7 +370,7 @@
         function addToOrder(id) {
             const data = getMenuData();
             const item = data.find(i => i.id === id);
-            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            const currentLang = localStorage.getItem('preferred_language') || 'ar';
             
             const cartItem = {
                 id: Date.now(), // unique instance in cart
@@ -404,7 +404,7 @@
             const totalDisplay = document.getElementById('cart-total-price');
             const badge = document.getElementById('cart-badge');
             const mobileCount = document.getElementById('mobile-cart-count');
-            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            const currentLang = localStorage.getItem('preferred_language') || 'ar';
             const emptyMsg = translations[currentLang].cart_empty;
 
             if (cart.length === 0) {
@@ -449,7 +449,7 @@
 
             // Demo Modal will be handled by openWhatsApp in data.js
             
-            const currentLang = localStorage.getItem('preferred_language') || 'en';
+            const currentLang = localStorage.getItem('preferred_language') || 'ar';
             const t = translations[currentLang];
             const total = cart.reduce((sum, item) => sum + item.price, 0);
 
@@ -501,7 +501,7 @@
                     const data = getMenuData();
                     const item = data.find(i => i.id === id);
                     if (item) {
-                        const currentLang = localStorage.getItem('preferred_language') || 'en';
+                        const currentLang = localStorage.getItem('preferred_language') || 'ar';
                         const t = translations[currentLang];
                         
                         // Set default options to match display

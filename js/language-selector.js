@@ -1,9 +1,11 @@
 // Language Selector Logic for Matamkom
 
+// Force Arabic immediately
+localStorage.setItem('preferred_language', 'ar');
+applyLanguage('ar');
+
 document.addEventListener('DOMContentLoaded', () => {
-    const preferredLang = 'ar';
-    localStorage.setItem('preferred_language', 'ar');
-    applyLanguage(preferredLang);
+    applyLanguage('ar');
 });
 
 function showLanguageModal() {
