@@ -1,15 +1,14 @@
-// Theme Manager Logic for Matamkom
+// Theme Manager Logic for Matamkom — Always Light on Entry
 
 (function() {
-    // Initial check for theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.classList.add(savedTheme);
-    document.documentElement.classList.remove(savedTheme === 'light' ? 'dark' : 'light');
+    // Force light mode on every page load
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
 
     document.addEventListener('DOMContentLoaded', () => {
         const toggleBtn = document.getElementById('theme-toggle');
         if (toggleBtn) {
-            updateToggleIcon(savedTheme);
+            updateToggleIcon('light');
             toggleBtn.addEventListener('click', toggleTheme);
         }
     });

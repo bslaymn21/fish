@@ -1,46 +1,99 @@
-function initScrollFloat() {
-  const els = document.querySelectorAll('[data-scroll-float]');
+function initScrollFloat(container) {
+  const scope = container || document;
+  const els = scope.querySelectorAll('[data-scroll-float]');
   if (!els.length) return;
+
+  // Register ScrollTrigger plugin if not already
+  if (gsap && gsap.registerPlugin) gsap.registerPlugin(ScrollTrigger);
 
   els.forEach((el) => {
     if (el._scrollFloatInitialized) return;
-
-    const text = el.textContent || '';
-    const chars = text.split('').map((c) => (c === ' ' ? '\u00A0' : c));
-    el.innerHTML = `<span class="scroll-float-text">${chars
-      .map((c) => `<span class="char">${c}</span>`)
-      .join('')}</span>`;
     el._scrollFloatInitialized = true;
 
-    const charEls = el.querySelectorAll('.char');
-    if (!charEls.length) return;
+    const type = el.getAttribute('data-scroll-float') || 'text';
 
-    gsap.fromTo(
-      charEls,
-      {
-        opacity: 0,
-        yPercent: 120,
-        scaleY: 2.3,
-        scaleX: 0.7,
-        transformOrigin: '50% 0%',
-      },
-      {
-        duration: 1,
-        ease: 'back.inOut(2)',
-        opacity: 1,
-        yPercent: 0,
-        scaleY: 1,
-        scaleX: 1,
-        stagger: 0.03,
-        scrollTrigger: {
-          trigger: el,
-          start: 'center bottom+=50%',
-          end: 'bottom bottom-=40%',
-          scrub: true,
-        },
-      }
-    );
+    if (type === 'text' || type === '') {
+      // --- Text character reveal ---
+      const text = el.textContent || '';
+      const chars = text.split('').map((c) => (c === ' ' ? '\u00A0' : c));
+      el.innerHTML = `<span class="scroll-float-text">${chars
+        .map((c) => `<span class="char">${c}</span>`)
+        .join('')}</span>`;
+
+      const charEls = el.querySelectorAll('.char');
+      if (!charEls.length) return;
+
+      gsap.fromTo(
+        charEls,
+        { opacity: 0, yPercent: 120, scaleY: 2.3, scaleX: 0.7, transformOrigin: '50% 0%' },
+        {
+          duration: 1,
+          ease: 'back.inOut(2)',
+          opacity: 1,
+          yPercent: 0,
+          scaleY: 1,
+          scaleX: 1,
+          stagger: 0.03,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top bottom-=20',
+            end: 'top center',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    } else if (type === 'card') {
+      // --- Card reveal (fade+slide up) ---
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top bottom-=40',
+            end: 'top center-=100',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    } else if (type === 'stagger') {
+      // --- Stagger children (e.g. grid of cards) ---
+      const children = el.children;
+      if (!children.length) return;
+
+      gsap.fromTo(
+        children,
+        { opacity: 0, y: 50, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top bottom-=30',
+            end: 'top center-=80',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }
   });
 }
 
-document.addEventListener('DOMContentLoaded', initScrollFloat);
+// On DOM ready, scan the whole page
+document.addEventListener('DOMContentLoaded', function() {
+  // Give other inline scripts (like renderMenu) a chance to run first
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      initScrollFloat();
+    });
+  });
+});

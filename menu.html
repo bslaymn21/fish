@@ -29,6 +29,7 @@
     <script src="./js/tailwind-config.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/scroll-float.css">
+    <link rel="stylesheet" href="./css/features-popup.css">
 
     <!-- Translation & Theme System -->
     <script src="./js/translations.js"></script>
@@ -36,6 +37,7 @@
     <script src="./js/theme-manager.js"></script>
     <script src="./js/preloader.js"></script>
     <script src="./js/scroll-float.js"></script>
+    <script src="./js/features-popup.js"></script>
 
     <style>
     </style>
@@ -192,6 +194,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderMenu('all');
             updateCartUI();
+            requestAnimationFrame(() => requestAnimationFrame(initScrollFloat));
         });
 
         function renderMenu(filter) {
@@ -220,7 +223,7 @@
                         <h2 class="font-h2 text-2xl md:text-3xl text-primary dark:text-white" data-scroll-float>${translatedCat}</h2>
                         <div class="h-[1px] flex-grow bg-slate-200 dark:bg-white/10"></div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-scroll-float="stagger">
                         ${items.map(item => createMenuItemHTML(item, currentLang)).join('')}
                     </div>
                 `;
