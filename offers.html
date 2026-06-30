@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="light" lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>مطعمكم | العروض</title>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/scroll-float.css">
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
+    <script src="./js/theme-manager.js"></script>
+    <script src="./js/preloader.js"></script>
+    <script src="./js/scroll-float.js"></script>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-white rtl-mode">
+    <div id="site-preloader" class="preloader-container">
+        <div class="absolute inset-0 z-0 opacity-40 pointer-events-none preloader-gradient"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="mb-lg animate-swim"><div class="animate-glow"><svg class="text-primary" fill="none" height="120" viewBox="0 0 200 100" width="180"><path class="fish-body" d="M10 50C10 50 40 10 90 10C140 10 180 50 180 50C180 50 140 90 90 90C40 90 10 50 10 50Z" stroke="currentColor" stroke-width="2"></path><path class="animate-tail" d="M10 50L-20 20V80L10 50Z" fill="currentColor" opacity="0.6"></path><circle cx="150" cy="45" fill="currentColor" r="3"></circle></svg></div></div>
+            <div class="w-full text-center space-y-md">
+                <h1 class="font-label-caps text-label-caps text-primary tracking-[0.3em] uppercase">MATAMKOM</h1>
+                <p class="font-body-md text-sm text-slate-500 italic opacity-60">نجهز لك صيد اليوم الطازج...</p>
+                <div class="preloader-progress mx-auto"><div class="preloader-progress-bar animate-loading"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
+        <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
+            <div class="flex items-center gap-4"><span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1" data-i18n="brand_name">مطعمكم</span></div>
+            <nav class="hidden md:flex gap-md items-center">
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight hover:text-secondary dark:hover:text-abyss-secondary" href="index.html">الرئيسية</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight hover:text-secondary dark:hover:text-abyss-secondary" href="menu.html">المنيو</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight hover:text-secondary dark:hover:text-abyss-secondary" href="about.html">عن المطعم</a>
+                <a class="text-primary dark:text-abyss-primary font-bold font-h3 text-sm tracking-tight hover:text-secondary dark:hover:text-abyss-secondary" href="offers.html">العروض</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight hover:text-secondary dark:hover:text-abyss-secondary" href="reservation.html">حجز طاولة</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight hover:text-secondary dark:hover:text-abyss-secondary" href="contact.html">اتصل بنا</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLanguage()" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-500 dark:text-abyss-on-variant"><span class="material-symbols-outlined">translate</span></button>
+                <button id="theme-toggle" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-500 dark:text-abyss-on-variant"><span class="material-symbols-outlined">dark_mode</span></button>
+                <button onclick="toggleOfferCart()" class="hidden md:flex relative p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-500 dark:text-abyss-on-variant">
+                    <span class="material-symbols-outlined">shopping_basket</span>
+                    <span id="offer-cart-badge" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pb-32">
+        <section class="relative w-full h-[400px] flex items-center overflow-hidden bg-gradient-to-br from-amber-600 to-orange-800">
+            <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 30% 50%, #fff 0%, transparent 60%), radial-gradient(circle at 70% 50%, #fbbf24 0%, transparent 50%);"></div>
+            <div class="relative z-10 container mx-auto px-6 md:px-xl text-center text-white">
+                <div class="inline-flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-md border border-white/20 rounded-full mb-6">
+                    <span class="material-symbols-outlined text-sm">local_offer</span>
+                    <span class="font-bold text-sm" id="offer-discount-label">خصم 20%</span>
+                </div>
+                <h1 class="font-h1 text-5xl md:text-7xl font-black mb-4" id="offer-title" data-scroll-float>عرض الصيف</h1>
+                <p class="text-xl text-white/80 max-w-xl mx-auto" id="offer-desc">استمتع بخصم 20% على أشهى الأطباق</p>
+            </div>
+        </section>
+
+        <div id="offer-ended-overlay" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center">
+            <div class="bg-white dark:bg-slate-900 rounded-[40px] p-12 max-w-md text-center mx-4">
+                <span class="material-symbols-outlined text-7xl text-slate-300 mb-6">cancel</span>
+                <h2 class="text-3xl font-black mb-4 text-slate-800 dark:text-white">العرض منتهي</h2>
+                <p class="text-slate-500 mb-8">هذا العرض غير متاح حالياً. تابعنا لمعرفة العروض القادمة!</p>
+                <a href="menu.html" class="inline-block px-10 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-secondary transition-all">تصفح المنيو</a>
+            </div>
+        </div>
+
+        <div id="offer-items-container" class="max-w-7xl mx-auto px-6 py-xl space-y-16"></div>
+    </main>
+
+    <!-- Offer Cart Drawer -->
+    <div id="offer-cart-overlay" onclick="toggleOfferCart()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] cart-overlay"></div>
+    <div id="offer-cart-drawer" class="cart-drawer flex flex-col">
+        <div class="p-6 border-b border-slate-100 dark:border-white/10 flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-primary dark:text-white">سلة العروض</h2>
+            <button onclick="toggleOfferCart()" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <div id="offer-cart-items" class="flex-grow overflow-y-auto p-6 space-y-4"></div>
+        <div class="p-6 border-t border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-black/20 space-y-3">
+            <div class="flex justify-between text-sm"><span>السعر قبل الخصم</span><span id="offer-cart-before" class="font-bold">0 جم</span></div>
+            <div class="flex justify-between text-sm text-green-600"><span>الخصم</span><span id="offer-cart-discount" class="font-bold">0 جم</span></div>
+            <div class="flex justify-between text-sm text-slate-500"><span>توفيرك</span><span id="offer-cart-saved" class="font-bold">0 جم</span></div>
+            <div class="flex justify-between items-center pt-2 border-t border-slate-200 dark:border-white/10">
+                <span class="font-bold text-lg">الإجمالي بعد الخصم</span>
+                <span id="offer-cart-total" class="text-2xl font-bold text-secondary">0 جم</span>
+            </div>
+            <button onclick="sendOfferWhatsApp()" class="w-full py-4 rounded-xl bg-[#25D366] text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 mt-2">
+                <span class="material-symbols-outlined text-xl">send</span> إرسال عبر واتساب
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="offer-checkout-modal" class="fixed inset-0 z-[100] modal-overlay items-center justify-center p-4" style="display:none;">
+        <div class="absolute inset-0" onclick="closeOfferCheckout()"></div>
+        <div class="bg-white dark:bg-abyss-container w-full max-w-lg rounded-[32px] shadow-3xl overflow-hidden relative z-10 modal-content p-8">
+            <h3 class="text-2xl font-bold text-primary dark:text-white mb-6">معلومات التوصيل</h3>
+            <div class="space-y-4">
+                <input type="text" id="offer-checkout-name" placeholder="الاسم" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl p-4 text-sm font-bold">
+                <input type="tel" id="offer-checkout-phone" placeholder="رقم الهاتف" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl p-4 text-sm font-bold">
+                <textarea id="offer-checkout-address" rows="2" placeholder="العنوان" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl p-4 text-sm font-bold"></textarea>
+                <input type="number" id="offer-checkout-people" placeholder="عدد الأشخاص" value="2" min="1" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl p-4 text-sm font-bold">
+                <button onclick="submitOfferCheckout()" class="w-full py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-secondary transition-all shadow-xl">تأكيد الطلب</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart -->
+    <div class="mobile-cart-btn md:hidden">
+        <button onclick="toggleOfferCart()" class="relative w-16 h-16 bg-primary text-white rounded-full shadow-[0_8px_25px_rgba(0,0,0,0.3)] flex items-center justify-center transition-all active:scale-90 hover:scale-105">
+            <span class="material-symbols-outlined text-3xl">shopping_basket</span>
+            <span id="offer-mobile-count" class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 animate-pulse">0</span>
+        </button>
+    </div>
+
+    <script src="./js/data.js"></script>
+    <script>
+        let offerCart = [];
+        let activeOffer = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadOfferPage();
+        });
+
+        function loadOfferPage() {
+            activeOffer = getActiveOffer();
+            if (!activeOffer) {
+                document.getElementById('offer-ended-overlay').classList.remove('hidden');
+                return;
+            }
+            document.getElementById('offer-discount-label').textContent = `خصم ${activeOffer.discountPercent}%`;
+            document.getElementById('offer-title').textContent = activeOffer.name;
+            document.getElementById('offer-desc').textContent = activeOffer.description;
+
+            const allItems = getMenuData();
+            const offerItems = allItems.filter(i => activeOffer.itemIds.includes(i.id));
+            renderOfferItems(offerItems);
+        }
+
+        function renderOfferItems(items) {
+            const container = document.getElementById('offer-items-container');
+            const cats = [...new Set(items.map(i => i.category))];
+            container.innerHTML = cats.map(cat => {
+                const catItems = items.filter(i => i.category === cat);
+                return `
+                    <section>
+                        <div class="flex items-center gap-base mb-8">
+                            <h2 class="font-h2 text-2xl md:text-3xl text-primary dark:text-white">${cat}</h2>
+                            <div class="h-[1px] flex-grow bg-slate-200 dark:bg-white/10"></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${catItems.map(item => createOfferItemHTML(item)).join('')}
+                        </div>
+                    </section>
+                `;
+            }).join('');
+        }
+
+        function createOfferItemHTML(item) {
+            const discounted = Math.round(item.price * (1 - activeOffer.discountPercent / 100));
+            const cartItem = offerCart.find(i => i.id === item.id);
+            const qty = cartItem ? cartItem.quantity : 0;
+            return `
+                <div class="group relative flex flex-col bg-white dark:bg-abyss-container border border-slate-100 dark:border-white/5 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="absolute top-4 right-4 z-10 bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm shadow-lg">-${activeOffer.discountPercent}%</div>
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="${item.image}">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-h3 text-xl text-primary dark:text-white mb-2">${item.name_ar}</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-2xl font-black text-secondary">${discounted} <span class="text-sm">EGP</span></span>
+                            <span class="old-price">${item.price} EGP</span>
+                        </div>
+                        ${qty === 0 ? `
+                            <button onclick="addOfferItem(${item.id})" class="w-full py-3 bg-primary hover:bg-secondary text-white rounded-2xl font-bold transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined">add</span> أضف للعرض
+                            </button>
+                        ` : `
+                            <div class="flex items-center justify-center gap-4 py-2 bg-slate-50 dark:bg-white/5 rounded-2xl">
+                                <button onclick="decreaseOfferQty(${item.id})" class="w-10 h-10 bg-slate-200 dark:bg-white/10 rounded-xl flex items-center justify-center font-bold text-lg hover:bg-secondary hover:text-white transition-all">-</button>
+                                <span class="font-black text-xl text-secondary">${qty}</span>
+                                <button onclick="increaseOfferQty(${item.id})" class="w-10 h-10 bg-slate-200 dark:bg-white/10 rounded-xl flex items-center justify-center font-bold text-lg hover:bg-secondary hover:text-white transition-all">+</button>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        function addOfferItem(id) {
+            const item = getMenuData().find(i => i.id === id);
+            if (!item) return;
+            offerCart.push({ id: item.id, dishId: item.id, name: item.name_ar, price: item.price, quantity: 1 });
+            updateOfferCartUI();
+            loadOfferPage();
+        }
+
+        function increaseOfferQty(id) {
+            const item = offerCart.find(i => i.id === id);
+            if (item) item.quantity += 1;
+            updateOfferCartUI();
+            loadOfferPage();
+        }
+
+        function decreaseOfferQty(id) {
+            const idx = offerCart.findIndex(i => i.id === id);
+            if (idx === -1) return;
+            if (offerCart[idx].quantity > 1) {
+                offerCart[idx].quantity -= 1;
+            } else {
+                offerCart.splice(idx, 1);
+            }
+            updateOfferCartUI();
+            loadOfferPage();
+        }
+
+        function toggleOfferCart() {
+            document.getElementById('offer-cart-drawer').classList.toggle('open');
+            document.getElementById('offer-cart-overlay').classList.toggle('active');
+        }
+
+        function updateOfferCartUI() {
+            const container = document.getElementById('offer-cart-items');
+            const totalBefore = offerCart.reduce((s, i) => s + i.price * i.quantity, 0);
+            const discount = activeOffer ? Math.round(totalBefore * activeOffer.discountPercent / 100) : 0;
+            const totalAfter = totalBefore - discount;
+            const badge = document.getElementById('offer-cart-badge');
+            const mobileCount = document.getElementById('offer-mobile-count');
+            const count = offerCart.reduce((s, i) => s + i.quantity, 0);
+
+            if (badge) { badge.classList.toggle('hidden', count === 0); badge.textContent = count; }
+            if (mobileCount) mobileCount.textContent = count;
+
+            if (count === 0) {
+                container.innerHTML = `<div class="flex flex-col items-center justify-center h-48 opacity-40"><span class="material-symbols-outlined text-4xl mb-2">shopping_basket</span><p class="font-bold">السلة فارغة</p></div>`;
+            } else {
+                container.innerHTML = offerCart.map(item => `
+                    <div class="flex gap-4 bg-slate-50 dark:bg-white/5 p-4 rounded-2xl border border-slate-100 dark:border-white/10">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-primary dark:text-white">${item.name}</h4>
+                            <div class="flex items-center gap-3 mt-2">
+                                <button onclick="decreaseOfferQty(${item.id})" class="w-8 h-8 bg-slate-200 dark:bg-white/10 rounded-lg flex items-center justify-center font-bold">-</button>
+                                <span class="font-black">${item.quantity}</span>
+                                <button onclick="increaseOfferQty(${item.id})" class="w-8 h-8 bg-slate-200 dark:bg-white/10 rounded-lg flex items-center justify-center font-bold">+</button>
+                            </div>
+                            <span class="text-secondary font-black mt-2 block">${item.price * item.quantity} EGP</span>
+                        </div>
+                        <button onclick="decreaseOfferQty(${item.id})" class="text-slate-300 hover:text-red-500 transition-colors"><span class="material-symbols-outlined">delete</span></button>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('offer-cart-before').textContent = totalBefore + ' جم';
+            document.getElementById('offer-cart-discount').textContent = '-' + discount + ' جم';
+            document.getElementById('offer-cart-saved').textContent = discount + ' جم';
+            document.getElementById('offer-cart-total').textContent = totalAfter + ' جم';
+        }
+
+        function sendOfferWhatsApp() {
+            if (offerCart.length === 0) return;
+            document.getElementById('offer-checkout-modal').style.display = 'flex';
+        }
+
+        function closeOfferCheckout() {
+            document.getElementById('offer-checkout-modal').style.display = 'none';
+        }
+
+        function submitOfferCheckout() {
+            const name = document.getElementById('offer-checkout-name').value.trim();
+            const phone = document.getElementById('offer-checkout-phone').value.trim();
+            const address = document.getElementById('offer-checkout-address').value.trim();
+            if (!name || !phone) {
+                alert('يرجى إدخال الاسم ورقم الهاتف');
+                return;
+            }
+            const totalBefore = offerCart.reduce((s, i) => s + i.price * i.quantity, 0);
+            const discount = activeOffer ? Math.round(totalBefore * activeOffer.discountPercent / 100) : 0;
+            const totalAfter = totalBefore - discount;
+
+            let msg = `🛒 *طلب عرض: ${activeOffer.name}*\n\n`;
+            msg += `👤 *الاسم:* ${name}\n📞 *الهاتف:* ${phone}\n📍 *العنوان:* ${address || '—'}\n\n`;
+            msg += `*الطلبات:*\n`;
+            offerCart.forEach(i => { msg += `  • ${i.name} x${i.quantity} = ${i.price * i.quantity} جم\n`; });
+            msg += `\n━━━━━━━━━━━━━━━━\n`;
+            msg += `💰 *قبل الخصم:* ${totalBefore} جم\n`;
+            msg += `🏷️ *الخصم (${activeOffer.discountPercent}%):* -${discount} جم\n`;
+            msg += `💎 *الإجمالي:* ${totalAfter} جم`;
+
+            const orderData = { id: 'OFF-' + Date.now(), type: 'offer', offerName: activeOffer.name, userName: name, phone, address, items: offerCart, total: totalAfter, discount, beforeDiscount: totalBefore, timestamp: new Date().toISOString(), status: 'pending' };
+            const orders = getOrders();
+            orders.unshift(orderData);
+            saveOrders(orders);
+            siteStats.incrementWhatsApp();
+
+            openWhatsApp(msg);
+            offerCart = [];
+            updateOfferCartUI();
+            closeOfferCheckout();
+            loadOfferPage();
+        }
+    </script>
+
+    <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 full-width py-12 mb-16 md:mb-0">
+        <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto text-center">
+            <span class="font-bold text-primary dark:text-abyss-primary font-h1 text-2xl tracking-widest" data-i18n="brand_name">مطعمكم</span>
+        </div>
+    </footer>
+</body>
+</html>

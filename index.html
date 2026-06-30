@@ -20,9 +20,14 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <!-- Shared Configuration & Styles -->
     <script src="./js/tailwind-config.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/scroll-float.css">
 
     <!-- Translation & Theme System -->
     <script src="./js/translations.js"></script>
@@ -30,6 +35,7 @@
     <script src="./js/theme-manager.js"></script>
     <script src="./js/preloader.js"></script>
     <script src="./js/data.js"></script>
+    <script src="./js/scroll-float.js"></script>
 </head>
 
 <body class="font-body-md text-on-background selection:bg-primary-container selection:text-white rtl-mode">
@@ -74,6 +80,10 @@
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
                     href="menu.html" data-i18n="nav_menu">المنيو</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
+                    href="about.html">عن المطعم</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
+                    href="offers.html">العروض</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
                     href="reservation.html" data-i18n="nav_orders">حجز طاولة</a>
                 <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary"
                     href="contact.html" data-i18n="nav_contact">اتصل بنا</a>
@@ -111,7 +121,7 @@
                             class="font-label-caps text-white text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold"
                             data-i18n="hero_tagline">صيد محلي يومي</span>
                     </div>
-                    <h1 class="font-h1 text-h1 text-white leading-[1.0] lg:text-[72px]" data-i18n="hero_title">صيد اليوم <br/>الطازج</h1>
+                    <h1 class="font-h1 text-h1 text-white leading-[1.0] lg:text-[72px]" data-scroll-float>صيد اليوم الطازج</h1>
                     <p class="font-body-lg text-body-lg text-white/90 max-w-lg" data-i18n="hero_desc">من أمواج الصباح إلى مائدتك. استمتع بأفضل المأكولات البحرية المصرية، المحضرة حسب ذوقك الخاص.</p>
                     <div class="pt-4 flex flex-wrap gap-4">
                         <a href="menu.html"
@@ -137,7 +147,7 @@
                 <div class="text-center mb-xl">
                     <h3 class="font-label-caps text-on-tertiary-container dark:text-abyss-primary opacity-80 mb-4"
                         data-i18n="home_seasonal_favorites">ترشيحاتنا لك</h3>
-                    <h2 class="font-h2 text-headline-lg text-primary dark:text-white" data-i18n="home_from_kitchen">أطباقنا المميزة</h2>
+                    <h2 class="font-h2 text-headline-lg text-primary dark:text-white" data-scroll-float>أطباقنا المميزة</h2>
                 </div>
             </div> <!-- Close container after the info text -->
             
@@ -394,7 +404,7 @@
         <!-- Why Choose Us -->
         <section class="py-xl bg-slate-50 dark:bg-slate-900 transition-colors">
             <div class="container mx-auto px-6">
-                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl" data-i18n="why_title">Why Choose Matamkom?</h2>
+                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl" data-scroll-float>لماذا مطعمكم؟</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
                     <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
                         <div class="value-icon"><span class="material-symbols-outlined">set_meal</span></div>
@@ -434,7 +444,7 @@
         <!-- Reviews Section -->
         <section class="py-xl bg-surface transition-colors">
             <div class="container mx-auto px-6">
-                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl" data-i18n="reviews_title">What Our Customers Say</h2>
+                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl" data-scroll-float>ماذا يقول عملاؤنا؟</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="review-card">
                         <div class="star-rating">⭐⭐⭐⭐⭐</div>
@@ -461,7 +471,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
                     <div class="lg:col-span-5 space-y-md text-right">
                         <h2 class="font-h2 text-h2 text-primary border-s-4 border-secondary ps-6"
-                            data-i18n="story_title">قصتنا</h2>
+                            data-i18n="story_title" data-scroll-float>قصتنا</h2>
                         <p class="font-body-lg text-xl text-slate-700 dark:text-white italic leading-relaxed" data-i18n="story_quote">"سر السمك الحلو في بساطته ونضافته."</p>
                         <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_1">في مطعمكم، بنفخر إننا نكون وجهتكم الأولى لعشاق السمك والفسفور. بدأنا برؤية بسيطة: نوصل صيد اليوم الطازج لمائدتكم بالنفس المصري الأصيل اللي بتحبوه.</p>
                         <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed" data-i18n="story_desc_2">الجودة هي أساس كل حاجة بنعملها. سواء كنت بتنورنا في المطعم مع عيلتك أو بتطلب أونلاين لغدوة رايقة، بنضمن لك خدمة احترافية وطعم يعكس أصول الأكل البحري المصري.</p>
@@ -521,6 +531,11 @@
             <span class="material-symbols-outlined">restaurant_menu</span>
             <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']"
                 data-i18n="nav_menu">Menu</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150"
+            href="offers.html">
+            <span class="material-symbols-outlined">local_offer</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']">Offers</span>
         </a>
         <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150"
             href="reservation.html">

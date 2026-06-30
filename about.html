@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="light" lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="تعرف على قصة مطعمكم - أفضل مطعم مأكولات بحرية في الإسكندرية" />
+    <title>مطعمكم | عن المطعم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Work+Sans:wght@400;600&amp;family=Noto+Kufi+Arabic:wght@400;700&amp;family=Noto+Sans+Arabic:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/scroll-float.css">
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
+    <script src="./js/theme-manager.js"></script>
+    <script src="./js/preloader.js"></script>
+    <script src="./js/scroll-float.js"></script>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-white rtl-mode">
+    <div id="site-preloader" class="preloader-container">
+        <div class="absolute inset-0 z-0 opacity-40 pointer-events-none preloader-gradient"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="mb-lg animate-swim">
+                <div class="animate-glow">
+                    <svg class="text-primary" fill="none" height="120" viewBox="0 0 200 100" width="180" xmlns="http://www.w3.org/2000/svg">
+                        <path class="fish-body" d="M10 50C10 50 40 10 90 10C140 10 180 50 180 50C180 50 140 90 90 90C40 90 10 50 10 50Z" stroke="currentColor" stroke-width="2"></path>
+                        <path class="animate-tail" d="M10 50L-20 20V80L10 50Z" fill="currentColor" opacity="0.6"></path>
+                        <circle cx="150" cy="45" fill="currentColor" r="3"></circle>
+                        <path class="animate-fin" d="M90 35C90 35 110 20 120 35" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+                        <path class="animate-fin" d="M90 65C90 65 110 80 120 65" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="w-full text-center space-y-md">
+                <h1 class="font-label-caps text-label-caps text-primary tracking-[0.3em] uppercase" data-i18n="loader_title">MATAMKOM</h1>
+                <p class="font-body-md text-sm text-slate-500 italic opacity-60" data-i18n="loader_desc">نجهز لك صيد اليوم الطازج...</p>
+                <div class="preloader-progress mx-auto"><div class="preloader-progress-bar animate-loading"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
+        <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
+            <div class="flex items-center gap-4">
+                <span class="text-lg font-bold tracking-widest text-primary dark:text-abyss-primary font-h1" data-i18n="brand_name">مطعمكم</span>
+            </div>
+            <nav class="hidden md:flex gap-md items-center">
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="index.html" data-i18n="nav_home">الرئيسية</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="menu.html" data-i18n="nav_menu">المنيو</a>
+                <a class="text-primary dark:text-abyss-primary font-bold font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="about.html" data-i18n="nav_about">عن المطعم</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="offers.html" data-i18n="nav_offers">العروض</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="reservation.html" data-i18n="nav_orders">حجز طاولة</a>
+                <a class="text-slate-500 dark:text-abyss-on-variant font-h3 text-sm tracking-tight transition-colors duration-200 hover:text-secondary dark:hover:text-abyss-secondary" href="contact.html" data-i18n="nav_contact">اتصل بنا</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLanguage()" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant" title="تغيير اللغة">
+                    <span class="material-symbols-outlined">translate</span>
+                </button>
+                <button id="theme-toggle" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-colors flex items-center justify-center text-slate-500 dark:text-abyss-on-variant">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="relative w-full h-[480px] flex items-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img alt="مطعم سمك" class="w-full h-full object-cover animate-ken-burns" src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?q=80&w=2070&auto=format&fit=crop" />
+                <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-abyss-surface/90 via-abyss-surface/40 to-transparent"></div>
+            </div>
+            <div class="relative z-10 container mx-auto px-6 md:px-xl">
+                <div class="max-w-2xl space-y-lg text-right">
+                    <div class="inline-flex items-center gap-3 px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full shadow-lg">
+                        <span class="font-label-caps text-white text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold">قصتنا</span>
+                    </div>
+                    <h1 class="font-h1 text-h1 text-white leading-[1.0] lg:text-[72px]" data-scroll-float>عن مطعمكم</h1>
+                    <p class="font-body-lg text-body-lg text-white/90 max-w-lg">نقدم لك أفضل المأكولات البحرية الطازجة في الإسكندرية منذ أكثر من 10 سنوات.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee -->
+        <section class="py-xl bg-white dark:bg-abyss-surface transition-colors">
+            <div class="container mx-auto px-6 md:px-xl">
+                <div class="text-center mb-xl">
+                    <h3 class="font-label-caps text-on-tertiary-container dark:text-abyss-primary opacity-80 mb-4">ترشيحاتنا لك</h3>
+                    <h2 class="font-h2 text-headline-lg text-primary dark:text-white" data-scroll-float>أطباقنا المميزة</h2>
+                </div>
+            </div>
+            <div class="marquee-container" id="about-marquee-container">
+                <div class="marquee-track" id="about-marquee-track"></div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="py-xl bg-slate-50 dark:bg-slate-900 transition-colors">
+            <div class="container mx-auto px-6">
+                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl" data-scroll-float>لماذا مطعمكم؟</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                    <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="value-icon"><span class="material-symbols-outlined">set_meal</span></div>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white">سمك طازجة يومياً</h3>
+                        <p class="text-slate-500 dark:text-slate-400">بننقي السمك بنفسنا كل يوم الصبح من ميناء الإسكندرية.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="value-icon"><span class="material-symbols-outlined">restaurant</span></div>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white">تجهيز حسب طلبك</h3>
+                        <p class="text-slate-500 dark:text-slate-400">مشوي، مقلي، سنجاري، طاجن - بالطريقة اللي تحبها.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="value-icon"><span class="material-symbols-outlined">delivery_dining</span></div>
+                        <h3 class="font-bold text-xl mb-2 text-primary dark:text-white">توصيل سريع</h3>
+                        <p class="text-slate-500 dark:text-slate-400">طلبك هيوصلك سخن وطازة لحد باب البيت في أسرع وقت.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="py-xl bg-surface transition-colors">
+            <div class="container mx-auto px-6">
+                <h2 class="font-h2 text-h2 text-center text-primary dark:text-white mb-xl">ماذا يقول عملاؤنا؟</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="reviews-grid"></div>
+                <div class="text-center mt-10">
+                    <button onclick="openFeedbackModal()" class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-bold hover:bg-secondary transition-all shadow-lg">
+                        <span class="material-symbols-outlined">rate_review</span>
+                        أضف تقييمك
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story -->
+        <section class="py-xl bg-surface">
+            <div class="container mx-auto px-6 md:px-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+                    <div class="lg:col-span-5 space-y-md text-right">
+                        <h2 class="font-h2 text-h2 text-primary border-s-4 border-secondary ps-6">قصتنا</h2>
+                        <p class="font-body-lg text-xl text-slate-700 dark:text-white italic leading-relaxed">"سر السمك الحلو في بساطته ونضافته."</p>
+                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed">في مطعمكم، بنفخر إننا نكون وجهتكم الأولى لعشاق السمك. بدأنا برؤية بسيطة: نوصل صيد اليوم الطازج لمائدتكم بالنفس المصري الأصيل.</p>
+                        <p class="font-body-md text-lg text-slate-600 dark:text-slate-200 leading-relaxed">الجودة هي أساس كل حاجة بنعملها. سواء كنت بتنورنا في المطعم مع عيلتك أو بتطلب أونلاين، بنضمن لك خدمة احترافية وطعم يعكس أصول الأكل البحري المصري.</p>
+                        <div class="pt-base">
+                            <a class="font-label-caps text-secondary border-b-2 border-secondary pb-1 hover:text-primary-container hover:border-primary-container transition-colors" href="menu.html">تصفح المنيو الكامل</a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img alt="Fishing boat" class="w-full aspect-[4/5] object-cover border border-slate-200" src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=600" />
+                            <img alt="Fresh oysters" class="w-full aspect-square object-cover border border-slate-200" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600" />
+                        </div>
+                        <div class="pt-xl space-y-4">
+                            <img alt="Chef preparing fish" class="w-full aspect-[4/6] object-cover border border-slate-200 shadow-sm" src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=600" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="fixed inset-0 z-[100] modal-overlay items-center justify-center p-4" style="display:none;">
+        <div class="absolute inset-0" onclick="closeFeedbackModal()"></div>
+        <div class="bg-white dark:bg-abyss-container w-full max-w-lg rounded-[32px] shadow-3xl overflow-hidden relative z-10 modal-content p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-primary dark:text-white">تقييمك يهمنا</h3>
+                <button onclick="closeFeedbackModal()" class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="space-y-4">
+                <div class="text-center mb-4">
+                    <div class="flex justify-center gap-2 text-4xl" id="feedback-stars">
+                        <span onclick="setFeedbackRating(1)" class="cursor-pointer hover:scale-110 transition-transform">☆</span>
+                        <span onclick="setFeedbackRating(2)" class="cursor-pointer hover:scale-110 transition-transform">☆</span>
+                        <span onclick="setFeedbackRating(3)" class="cursor-pointer hover:scale-110 transition-transform">☆</span>
+                        <span onclick="setFeedbackRating(4)" class="cursor-pointer hover:scale-110 transition-transform">☆</span>
+                        <span onclick="setFeedbackRating(5)" class="cursor-pointer hover:scale-110 transition-transform">☆</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-2" id="feedback-rating-label">اختر تقييمك</p>
+                </div>
+                <input type="text" id="fb-name" placeholder="الاسم" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl p-4 text-sm font-bold focus:ring-2 focus:ring-primary/20">
+                <input type="tel" id="fb-phone" placeholder="رقم الهاتف" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl p-4 text-sm font-bold focus:ring-2 focus:ring-primary/20">
+                <textarea id="fb-comment" rows="3" placeholder="اكتب تعليقك..." class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl p-4 text-sm font-bold focus:ring-2 focus:ring-primary/20"></textarea>
+                <button onclick="submitFeedback()" class="w-full py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-secondary transition-all shadow-xl">إرسال التقييم</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/data.js"></script>
+    <script>
+        let fbRating = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMarquee();
+            renderReviews();
+            applySiteSettings();
+        });
+
+        function renderMarquee() {
+            const items = getMenuData().filter(i => i.showOnHome);
+            const track = document.getElementById('about-marquee-track');
+            if (!track) return;
+            const html = items.map(item => `
+                <div class="marquee-item group">
+                    <img alt="${item.name}" class="w-full h-full object-cover" src="${item.image}" />
+                    <span class="price-badge">${item.price} <span>EGP</span></span>
+                    <button onclick="quickAdd(${item.id})" class="quick-add-btn">أضف للطلب</button>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                        <h4 class="text-white font-bold text-lg">${item.name_ar}</h4>
+                    </div>
+                </div>
+            `).join('');
+            track.innerHTML = html + html;
+        }
+
+        function renderReviews() {
+            const all = getFeedback();
+            const shown = all.filter(r => r.showOnHome).slice(0, 3);
+            const grid = document.getElementById('reviews-grid');
+            if (!grid) return;
+            grid.innerHTML = shown.map(r => `
+                <div class="review-card">
+                    <div class="star-rating">${'⭐'.repeat(r.rating)}</div>
+                    <p class="text-slate-700 dark:text-slate-300 italic mb-4">"${r.comment}"</p>
+                    <p class="font-bold text-sm text-primary dark:text-secondary">— ${r.name}</p>
+                </div>
+            `).join('');
+        }
+
+        function setFeedbackRating(n) {
+            fbRating = n;
+            const container = document.getElementById('feedback-stars');
+            container.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                container.innerHTML += `<span onclick="setFeedbackRating(${i})" class="cursor-pointer hover:scale-110 transition-transform text-4xl">${i <= n ? '⭐' : '☆'}</span>`;
+            }
+            const labels = ['', 'سيء', 'مقبول', 'جيد', 'جيد جداً', 'ممتاز'];
+            document.getElementById('feedback-rating-label').textContent = labels[n] || 'اختر تقييمك';
+        }
+
+        function openFeedbackModal() {
+            document.getElementById('feedback-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById('feedback-modal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function submitFeedback() {
+            const name = document.getElementById('fb-name').value.trim();
+            const phone = document.getElementById('fb-phone').value.trim();
+            const comment = document.getElementById('fb-comment').value.trim();
+            if (!name || !comment || fbRating === 0) {
+                alert('يرجى إدخال الاسم والتعليق والتقييم');
+                return;
+            }
+            const feedback = getFeedback();
+            feedback.unshift({
+                id: Date.now(),
+                name, phone, comment,
+                rating: fbRating,
+                showOnHome: false,
+                date: new Date().toISOString().split('T')[0]
+            });
+            saveFeedback(feedback);
+            alert('شكراً لتقييمك! سيتم مراجعته من الإدارة.');
+            closeFeedbackModal();
+            document.getElementById('fb-name').value = '';
+            document.getElementById('fb-phone').value = '';
+            document.getElementById('fb-comment').value = '';
+            fbRating = 0;
+            document.getElementById('feedback-stars').innerHTML = '☆'.repeat(5).split('').map((s, i) => `<span onclick="setFeedbackRating(${i+1})" class="cursor-pointer hover:scale-110 transition-transform text-4xl">${s}</span>`).join('');
+        }
+
+        function quickAdd(id) {
+            localStorage.setItem('pending_add_to_cart', id);
+            window.location.href = 'menu.html';
+        }
+
+        function applySiteSettings() {
+            const settings = getSiteSettings();
+            const socialContainer = document.getElementById('social-links');
+            if (socialContainer && settings.facebook) {
+                socialContainer.innerHTML = `
+                    ${settings.facebook ? `<a href="${settings.facebook}" target="_blank" class="p-3 hover:bg-white/10 rounded-full transition-colors"><span class="material-symbols-outlined">thumb_up</span></a>` : ''}
+                    ${settings.instagram ? `<a href="${settings.instagram}" target="_blank" class="p-3 hover:bg-white/10 rounded-full transition-colors"><span class="material-symbols-outlined">camera_alt</span></a>` : ''}
+                    ${settings.tiktok ? `<a href="${settings.tiktok}" target="_blank" class="p-3 hover:bg-white/10 rounded-full transition-colors"><span class="material-symbols-outlined">music_note</span></a>` : ''}
+                `;
+            }
+        }
+    </script>
+
+    <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 full-width py-12">
+        <div class="flex flex-col items-center gap-6 px-6 max-w-7xl mx-auto text-center">
+            <div class="flex gap-4" id="social-links"></div>
+            <span class="font-bold text-[#003366] dark:text-blue-100 font-h1 text-2xl tracking-widest" data-i18n="brand_name">مطعمكم</span>
+            <div class="mt-4 opacity-30 hover:opacity-100 transition-opacity">
+                <a href="admin/index.html" class="text-[9px] uppercase tracking-widest text-slate-500 hover:text-primary dark:hover:text-white">Go to Admin Dashboard</a>
+            </div>
+        </div>
+    </footer>
+
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white dark:bg-slate-900 px-2 pb-safe border-t border-slate-200 dark:border-slate-800 z-50 h-16">
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="index.html"><span class="material-symbols-outlined">home</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_home">Home</span></a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="menu.html"><span class="material-symbols-outlined">restaurant_menu</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_menu">Menu</span></a>
+        <a class="flex flex-col items-center justify-center text-primary dark:text-abyss-primary border-t-2 border-primary dark:border-abyss-primary pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="about.html"><span class="material-symbols-outlined">info</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']">About</span></a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="offers.html"><span class="material-symbols-outlined">local_offer</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']">Offers</span></a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full active:scale-95 transition-transform duration-150" href="contact.html"><span class="material-symbols-outlined">location_on</span><span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue']" data-i18n="nav_contact">Contact</span></a>
+    </nav>
+    <a href="admin/index.html" class="fixed bottom-24 left-6 z-50 group flex items-center gap-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-4 py-3 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 border border-white/10 dark:border-black/5">
+        <div class="w-8 h-8 rounded-lg bg-primary/20 dark:bg-white flex items-center justify-center"><span class="material-symbols-outlined text-sm">dashboard_customize</span></div>
+        <div class="flex flex-col"><span class="text-[10px] font-bold uppercase tracking-widest opacity-60 text-white">Staff Access</span><span class="text-xs font-black tracking-tight text-white" data-i18n="admin_panel_link">Go to Admin Dashboard</span></div>
+    </a>
+</body>
+</html>
