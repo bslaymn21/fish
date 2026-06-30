@@ -20,8 +20,7 @@
     { icon: '🏷️', title: 'نظام الكوبونات', desc: 'أنشئ كوبونات خصم (نسبة أو مبلغ ثابت)', link: 'admin/index.html#content-coupons', badge: '' },
     { icon: '📈', title: 'التقارير', desc: 'تحليل أفضل وأقل الأصناف مبيعاً برسوم بيانية', link: 'admin/index.html#content-reports', badge: '' },
     { icon: '⚙️', title: 'الإعدادات', desc: 'رقم واتساب، العنوان، روابط التواصل', link: 'admin/index.html#content-settings', badge: '' },
-    { icon: '📱', title: 'رمز QR', desc: 'رمز QR سريع للمنيو والموقع', link: 'admin/index.html#content-qrcode', badge: '' },
-    { icon: '🕵️', title: 'Super Admin', desc: 'إحصائيات الزوار والنشاطات على الموقع', link: 'admin/index.html#content-superadmin', badge: 'سرّي' }
+    { icon: '📱', title: 'رمز QR', desc: 'رمز QR سريع للمنيو والموقع', link: 'admin/index.html#content-qrcode', badge: '' }
   ]
 
   function isAdmin() {

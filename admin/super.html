@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="light" lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Super Admin | المراقبة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&family=Work+Sans:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body { font-family: 'Noto Kufi Arabic', 'Work Sans', sans-serif; background-color: #0a141d; }
+        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 24px; transition: all 0.2s; }
+        .stat-card:hover { background: rgba(255,255,255,0.06); }
+        .glow-button { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+        @keyframes shake { 10%,90% { transform: translate3d(-1px,0,0); } 20%,80% { transform: translate3d(2px,0,0); } 30%,50%,70% { transform: translate3d(-4px,0,0); } 40%,60% { transform: translate3d(4px,0,0); } }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 md:p-6 selection:bg-secondary selection:text-white" id="app-body">
+    <!-- Login Screen -->
+    <div id="login-screen" class="w-full max-w-md">
+        <div class="glass rounded-[40px] overflow-hidden shadow-2xl p-8 md:p-12 text-center">
+            <div class="mb-10">
+                <div class="w-20 h-20 bg-primary/10 rounded-3xl mx-auto flex items-center justify-center mb-6 border border-primary/20">
+                    <span class="material-symbols-outlined text-primary text-4xl">admin_panel_settings</span>
+                </div>
+                <h1 class="text-white text-3xl font-black tracking-tight font-h1 mb-2">Super Admin</h1>
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-[0.3em]">لوحة المراقبة والتحليل</p>
+            </div>
+            <form id="login-form" class="space-y-6 text-right">
+                <div class="space-y-2">
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest pr-2">اسم المستخدم</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">person</span>
+                        <input type="text" id="s-user" required placeholder="أدخل اسم المستخدم" class="w-full pr-12 pl-6 py-5 bg-white/5 border border-white/10 rounded-2xl focus:border-secondary focus:ring-0 transition-all text-white outline-none">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest pr-2">كلمة المرور</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">lock</span>
+                        <input type="password" id="s-pass" required placeholder="••••••••" class="w-full pr-12 pl-6 py-5 bg-white/5 border border-white/10 rounded-2xl focus:border-secondary focus:ring-0 transition-all text-white outline-none">
+                    </div>
+                </div>
+                <div id="s-error" class="hidden">
+                    <div class="bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold p-4 rounded-xl flex items-center gap-3 justify-center">
+                        <span class="material-symbols-outlined text-sm">error</span>
+                        خطأ في اسم المستخدم أو كلمة المرور
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-secondary py-5 rounded-2xl text-white font-black tracking-[0.1em] glow-button hover:scale-[1.02] active:scale-95 transition-all shadow-xl flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined">login</span>
+                    دخول
+                </button>
+            </form>
+            <div class="mt-12 pt-8 border-t border-white/5">
+                <a href="../index.html" class="text-slate-500 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    العودة للموقع
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div id="dash-screen" class="hidden w-full max-w-6xl mx-auto space-y-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-white text-2xl md:text-3xl font-black font-h1">Super Admin</h1>
+                <p class="text-slate-400 text-xs font-bold mt-1">مراقبة وتحليل حركة الزوار</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="location.reload()" class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 transition-all"><span class="material-symbols-outlined">refresh</span></button>
+                <button onclick="sessionStorage.removeItem('matamkom_admin_auth'); location.reload()" class="w-10 h-10 flex items-center justify-center bg-red-500/10 hover:bg-red-500/20 rounded-xl text-red-400 transition-all" title="تسجيل خروج"><span class="material-symbols-outlined">logout</span></button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-2xl text-sky-400">visibility</span><span class="text-2xl font-black text-white" id="sa-today-visitors">0</span></div>
+                <p class="text-xs font-bold text-slate-500">زوار اليوم</p>
+            </div>
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-2xl text-amber-400">group</span><span class="text-2xl font-black text-white" id="sa-total-visitors">0</span></div>
+                <p class="text-xs font-bold text-slate-500">إجمالي الزوار</p>
+            </div>
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-2xl text-emerald-400">toggle_on</span><span class="text-2xl font-black text-white" id="sa-today-actions">0</span></div>
+                <p class="text-xs font-bold text-slate-500">نشاطات اليوم</p>
+            </div>
+            <div class="stat-card">
+                <div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-2xl text-purple-400">database</span><span class="text-2xl font-black text-white" id="sa-total-actions">0</span></div>
+                <p class="text-xs font-bold text-slate-500">إجمالي النشاطات</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="stat-card">
+                <h3 class="text-white font-black mb-4 flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-sky-400">pages</span> الصفحات الأكثر زيارة</h3>
+                <div id="sa-page-views" class="space-y-2"></div>
+            </div>
+            <div class="stat-card">
+                <h3 class="text-white font-black mb-4 flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-amber-400">pulse</span> أنواع النشاطات</h3>
+                <div id="sa-action-breakdown" class="space-y-2"></div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-white font-black flex items-center gap-2 text-sm"><span class="material-symbols-outlined text-purple-400">history</span> آخر النشاطات</h3>
+                <button onclick="if(confirm('مسح سجل النشاطات؟')){localStorage.removeItem('matamku_super_log');renderDash()}" class="text-[10px] font-black text-red-400 px-3 py-1.5 rounded-xl hover:bg-red-500/10 transition-all flex items-center gap-1">
+                    <span class="material-symbols-outlined" style="font-size:14px;">delete</span> مسح السجل
+                </button>
+            </div>
+            <div id="sa-recent-log" class="space-y-1.5 max-h-[500px] overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script src="../js/data.js"></script>
+    <script>
+        const AUTH_KEY = 'matamkom_admin_auth';
+
+        function checkAuth() {
+            if (sessionStorage.getItem(AUTH_KEY) === 'basel') {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('dash-screen').classList.remove('hidden');
+                renderDash();
+            } else {
+                document.getElementById('login-screen').classList.remove('hidden');
+                document.getElementById('dash-screen').classList.add('hidden');
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('s-user').value.trim();
+            const pass = document.getElementById('s-pass').value.trim();
+            const err = document.getElementById('s-error');
+            if (user === 'basel' && pass === '5384358') {
+                sessionStorage.setItem(AUTH_KEY, 'basel');
+                checkAuth();
+            } else {
+                err.classList.remove('hidden');
+                document.getElementById('s-pass').value = '';
+                const c = document.querySelector('.glass');
+                c.style.animation = 'none';
+                void c.offsetWidth;
+                c.style.animation = 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
+            }
+        });
+
+        function renderDash() {
+            const stats = getSuperStats();
+            document.getElementById('sa-today-visitors').textContent = stats.todayVisitors;
+            document.getElementById('sa-total-visitors').textContent = stats.totalVisitors;
+            document.getElementById('sa-today-actions').textContent = stats.todayActions;
+            document.getElementById('sa-total-actions').textContent = stats.totalActions;
+
+            const pv = document.getElementById('sa-page-views');
+            const sorted = Object.entries(stats.pageViews).sort((a,b) => b[1] - a[1]);
+            pv.innerHTML = sorted.length === 0
+                ? '<p class="text-xs text-slate-500 opacity-60 py-4 text-center">لا توجد زيارات بعد</p>'
+                : sorted.map(([page, count]) => `
+                    <div class="flex items-center justify-between p-3 bg-white/5 rounded-2xl">
+                        <span class="text-xs font-bold text-slate-300">${page}</span>
+                        <span class="text-xs font-black text-secondary">${count} زيارة</span>
+                    </div>
+                `).join('');
+
+            const ab = document.getElementById('sa-action-breakdown');
+            const types = { page_view: 'تصفح صفحة', view_dish: 'مشاهدة طبق', add_to_cart: 'إضافة للسلة', order_whatsapp: 'إرسال طلب', order_offer_whatsapp: 'طلب عرض', open_features_popup: 'فتح المميزات' };
+            const sortedA = Object.entries(stats.actionCounts).sort((a,b) => b[1] - a[1]);
+            ab.innerHTML = sortedA.length === 0
+                ? '<p class="text-xs text-slate-500 opacity-60 py-4 text-center">لا توجد نشاطات بعد</p>'
+                : sortedA.map(([type, count]) => `
+                    <div class="flex items-center justify-between p-3 bg-white/5 rounded-2xl">
+                        <span class="text-xs font-bold text-slate-300">${types[type] || type}</span>
+                        <span class="text-xs font-black text-amber-400">${count}</span>
+                    </div>
+                `).join('');
+
+            const log = document.getElementById('sa-recent-log');
+            const icons = { page_view: 'visibility', view_dish: 'restaurant', add_to_cart: 'add_shopping_cart', order_whatsapp: 'chat', order_offer_whatsapp: 'local_offer', open_features_popup: 'stars' };
+            const names = { page_view: 'تصفح', view_dish: 'مشاهدة طبق', add_to_cart: 'إضافة للسلة', order_whatsapp: 'طلب', order_offer_whatsapp: 'عرض', open_features_popup: 'مميزات' };
+            log.innerHTML = stats.recent.length === 0
+                ? '<p class="text-xs text-slate-500 opacity-60 py-4 text-center">لا توجد نشاطات حديثة</p>'
+                : stats.recent.map(e => `
+                    <div class="flex items-center gap-3 p-3 bg-white/5 rounded-2xl text-xs">
+                        <span class="w-7 h-7 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-xs text-slate-300">${icons[e.type] || 'circle'}</span>
+                        </span>
+                        <div class="flex-grow min-w-0">
+                            <span class="font-bold text-slate-200">${names[e.type] || e.type}</span>
+                            ${e.data?.name ? `<span class="text-slate-500"> - ${e.data.name}</span>` : ''}
+                            <span class="text-[9px] text-slate-600 block truncate">${e.page}</span>
+                        </div>
+                        <span class="text-[9px] text-slate-600 flex-shrink-0">${e.time}</span>
+                    </div>
+                `).join('');
+        }
+
+        checkAuth();
+    </script>
+</body>
+</html>
