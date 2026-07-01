@@ -1,22 +1,21 @@
 (function() {
-    // Hide preloader as soon as page is ready (no artificial delay)
     var loader = document.getElementById('site-preloader');
-    if (loader) {
-        if (document.readyState === 'complete') {
+    if (!loader) return;
+
+    function hideLoader() {
+        // Tiny delay to let Tailwind/fonts paint, then fade out
+        setTimeout(function() {
             loader.classList.add('fade-out');
-            document.body.style.overflow = '';
-        } else {
-            window.addEventListener('load', function() {
-                loader.classList.add('fade-out');
-                document.body.style.overflow = '';
-            });
-            // Fallback: hide after 1s even if load event is slow
-            setTimeout(function() {
-                if (loader && !loader.classList.contains('fade-out')) {
-                    loader.classList.add('fade-out');
-                    document.body.style.overflow = '';
-                }
-            }, 1000);
-        }
+            // Remove from DOM after transition
+            setTimeout(function() { loader.remove(); }, 500);
+        }, 200);
+    }
+
+    if (document.readyState === 'complete') {
+        hideLoader();
+    } else {
+        document.addEventListener('DOMContentLoaded', hideLoader);
+        // Fallback: hide after 2s even if page is slow
+        setTimeout(hideLoader, 2000);
     }
 })();

@@ -24,23 +24,25 @@
     <script src="./js/preloader.js" defer></script>
     <script src="./js/scroll-float.js" defer></script>
     <script src="./js/features-popup.js" defer></script>
+    <style>
+        #site-preloader{position:fixed;inset:0;z-index:9999;background:#f9f9f9;display:flex;align-items:center;justify-content:center;transition:opacity .4s ease-out}
+        .dark #site-preloader{background:#0a141d}
+        #site-preloader.fade-out{opacity:0;pointer-events:none}
+        .ld-dots{display:flex;gap:8px}
+        .ld-dots div{width:12px;height:12px;border-radius:50%;background:#003366;animation:ld-b 0.6s infinite alternate}
+        .dark .ld-dots div{background:#b1c8e9}
+        .ld-dots div:nth-child(2){animation-delay:0.15s}
+        .ld-dots div:nth-child(3){animation-delay:0.3s}
+        @keyframes ld-b{from{transform:translateY(0)}to{transform:translateY(-14px)}}
+    </style>
 </head>
 <body class="font-body-md text-on-background selection:bg-primary-container selection:text-white rtl-mode">
     <div id="features-badge" onclick="window.__toggleFeaturesPopup()">
         <span class="badge-icon"><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">stars</span></span>
         <span class="badge-text">شاهد المميزات</span>
     </div>
-    <div id="site-preloader" class="preloader-container">
-        <div class="absolute inset-0 z-0 opacity-40 pointer-events-none preloader-gradient"></div>
-        <div class="relative z-10 flex flex-col items-center">
-            <div class="mb-lg animate-swim"><div class="animate-glow"><svg class="text-primary" fill="none" height="120" viewBox="0 0 200 100" width="180"><path class="fish-body" d="M10 50C10 50 40 10 90 10C140 10 180 50 180 50C180 50 140 90 90 90C40 90 10 50 10 50Z" stroke="currentColor" stroke-width="2"></path><path class="animate-tail" d="M10 50L-20 20V80L10 50Z" fill="currentColor" opacity="0.6"></path><circle cx="150" cy="45" fill="currentColor" r="3"></circle></svg></div></div>
-            <div class="w-full text-center space-y-md">
-                <h1 class="font-label-caps text-label-caps text-primary tracking-[0.3em] uppercase">MATAMKOM</h1>
-                <p class="font-body-md text-sm text-slate-500 italic opacity-60">نجهز لك صيد اليوم الطازج...</p>
-                <div class="preloader-progress mx-auto"><div class="preloader-progress-bar animate-loading"></div></div>
-            </div>
-        </div>
-    </div>
+    <!-- Minimal preloader -->
+    <div id="site-preloader"><div class="ld-dots"><div></div><div></div><div></div></div></div>
 
     <header class="glass-surface border-b border-slate-200 dark:border-white/10 docked full-width top-0 sticky z-50 transition-colors">
         <div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max">
