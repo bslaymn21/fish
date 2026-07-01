@@ -26,11 +26,19 @@
       highlight: 'features'
     },
     {
-      selector: '#cart-fab, .cart-fab, [onclick*="toggleCart"]',
+      selector: '.mobile-cart-btn, .mobile-cart-btn button, #cart-fab',
       title: 'سلة الطلبات',
       text: 'هنا بتظهر طلباتك اللي أضفتها تقدر تراجعها وتعدلها',
       icon: 'shopping_cart',
-      highlight: 'cart'
+      highlight: 'cart',
+      onEnter: function() {
+        var btn = document.querySelector('.mobile-cart-btn button, [onclick*="toggleCart"]');
+        if (btn && typeof toggleCart === 'function') toggleCart();
+        else if (btn) btn.click();
+      },
+      onExit: function() {
+        if (typeof toggleCart === 'function') toggleCart();
+      }
     },
     {
       selector: '#bottom-nav, .bottom-nav, nav.fixed.bottom-0',
@@ -69,7 +77,14 @@
     const el = getElement(step.selector)
     if (!el) { currentStep++; showStep(currentStep); return }
 
-    const rect = el.getBoundingClientRect()
+    // Call onEnter hook (e.g. open cart)
+    if (typeof step.onEnter === 'function') {
+      step.onEnter()
+    }
+
+    // Re-get element after onEnter (in case DOM changed)
+    const el2 = getElement(step.selector)
+    const rect = (el2 || el).getBoundingClientRect()
     const isMobile = window.innerWidth < 768
     const scrollX = window.scrollX || window.pageXOffset
     const scrollY = window.scrollY || window.pageYOffset
@@ -136,6 +151,10 @@
     btn.onmouseenter = () => btn.style.transform = 'scale(1.05)'
     btn.onmouseleave = () => btn.style.transform = 'scale(1)'
     btn.onclick = () => {
+      // Call onExit hook (e.g. close cart) before moving on
+      if (typeof step.onExit === 'function') {
+        step.onExit()
+      }
       currentStep++
       showStep(currentStep)
     }
