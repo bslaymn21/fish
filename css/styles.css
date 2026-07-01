@@ -689,10 +689,10 @@ input[type=number] { -moz-appearance: textfield; }
 .hover-lift:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
 .dark .hover-lift:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
 
-/* ===== Entrance Animations ===== */
-.entrance-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+/* ===== Entrance Animations (بطيء وواضح) ===== */
+.entrance-fade { opacity: 0; transform: translateY(30px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
 .entrance-fade.entered { opacity: 1; transform: translateY(0); }
-.entrance-hero { opacity: 0; transform: translateY(30px) scale(0.98); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.entrance-hero { opacity: 0; transform: translateY(40px) scale(0.95); transition: opacity 1.2s cubic-bezier(0.22,1,0.36,1), transform 1.2s cubic-bezier(0.22,1,0.36,1); }
 .entrance-hero.entered { opacity: 1; transform: translateY(0) scale(1); }
 
 /* ===== Smooth Scroll ===== */

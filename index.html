@@ -544,46 +544,46 @@ const currentLang = localStorage.getItem('preferred_language') || 'ar';
         </div>
     </footer>
 
-    <!-- Entrance Stagger Animation -->
+    <!-- Entrance Stagger Animation (بطيء وواضح) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Step 1: Hero staggers in first
+            // Step 1: Hero يتظهر ببطء
             const heroEls = document.querySelectorAll('.entrance-hero');
             heroEls.forEach((el, i) => {
-                setTimeout(() => el.classList.add('entered'), i * 150);
+                setTimeout(() => el.classList.add('entered'), i * 300);
             });
 
-            // Step 2: Filter bar fades in after hero
+            // Step 2: Filter bar يظهر بعد الهيرو
             const filterBar = document.getElementById('filter-container');
             if (filterBar) {
                 filterBar.style.opacity = '0';
-                filterBar.style.transform = 'translateY(16px)';
-                filterBar.style.transition = 'all 0.5s cubic-bezier(0.22,1,0.36,1)';
+                filterBar.style.transform = 'translateY(20px)';
+                filterBar.style.transition = 'all 0.8s cubic-bezier(0.22,1,0.36,1)';
                 setTimeout(() => {
                     filterBar.style.opacity = '1';
                     filterBar.style.transform = 'translateY(0)';
-                }, 400);
+                }, 800);
             }
 
-            // Step 3: IntersectionObserver for entrance-fade sections
+            // Step 3: IntersectionObserver for entrance-fade sections (أقسام تحت)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('entered');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.15 });
             document.querySelectorAll('.entrance-fade').forEach(el => observer.observe(el));
 
-            // Step 4: GSAP stagger for menu cards on scroll
+            // Step 4: GSAP stagger for menu cards — دخول بطيء متتالي
             const menuItems = document.querySelectorAll('#menu-container [data-scroll-float="card"]');
             if (menuItems.length && typeof gsap !== 'undefined') {
                 const grid = menuItems[0].closest('.grid') || menuItems[0].parentElement;
                 if (grid) {
-                    gsap.set(grid.children, { opacity: 0, y: 30 });
+                    gsap.set(grid.children, { opacity: 0, y: 50, scale: 0.93 });
                     gsap.to(grid.children, {
-                        opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out',
-                        scrollTrigger: { trigger: grid, start: 'top 85%', toggleActions: 'play none none none' }
+                        opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.12, ease: 'power2.out',
+                        scrollTrigger: { trigger: grid, start: 'top 82%', toggleActions: 'play none none none' }
                     });
                 }
             }

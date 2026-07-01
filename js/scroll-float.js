@@ -43,43 +43,43 @@ function initScrollFloat(container) {
         }
       );
     } else if (type === 'card') {
-      // --- Card reveal (fade+slide up) ---
+      // --- Card reveal (fade+slide up) — واضح وبطيء ---
       gsap.fromTo(
         el,
-        { opacity: 0, y: 60, scale: 0.95 },
+        { opacity: 0, y: 80, scale: 0.92 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: 1.2,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
-            start: 'top bottom-=40',
-            end: 'top center-=100',
+            start: 'top bottom-=60',
+            end: 'top center-=120',
             toggleActions: 'play none none none',
           },
         }
       );
     } else if (type === 'stagger') {
-      // --- Stagger children (e.g. grid of cards) ---
+      // --- Stagger children (e.g. grid of cards) — واضح وبطيء ---
       const children = el.children;
       if (!children.length) return;
 
       gsap.fromTo(
         children,
-        { opacity: 0, y: 50, scale: 0.95 },
+        { opacity: 0, y: 70, scale: 0.93 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.6,
+          duration: 1,
           ease: 'power2.out',
-          stagger: 0.1,
+          stagger: 0.12,
           scrollTrigger: {
             trigger: el,
-            start: 'top bottom-=30',
-            end: 'top center-=80',
+            start: 'top bottom-=50',
+            end: 'top center-=100',
             toggleActions: 'play none none none',
           },
         }
