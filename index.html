@@ -67,6 +67,7 @@
     <div id="features-badge" onclick="window.__toggleFeaturesPopup()" class="entrance-hero">
         <span class="badge-icon"><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">stars</span></span>
         <span class="badge-text">شاهد المميزات</span>
+        <a href="admin/index.html" onclick="event.stopPropagation();" class="admin-shortcut" title="لوحة التحكم"><span class="material-symbols-outlined" style="font-size:14px;font-variation-settings:'FILL' 0">admin_panel_settings</span></a>
     </div>
     <!-- TopAppBar -->
     <header
@@ -498,6 +499,9 @@
 
             const encodedMsg = encodeURIComponent(message);
             openWhatsApp(message);
+            // Close cart after sending so nav is visible
+            document.getElementById('cart-drawer').classList.remove('open');
+            document.getElementById('cart-overlay').classList.remove('active');
         }
 
         // Process pending add-to-cart from index.html marquee
