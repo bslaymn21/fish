@@ -1,11 +1,15 @@
 // Language Selector Logic for Matamkom
 
-// Force Arabic immediately
-localStorage.setItem('preferred_language', 'ar');
-applyLanguage('ar');
+// Default to Arabic on first visit
+if (!localStorage.getItem('preferred_language')) {
+    localStorage.setItem('preferred_language', 'ar');
+}
+const savedLang = localStorage.getItem('preferred_language') || 'ar';
+applyLanguage(savedLang);
 
 document.addEventListener('DOMContentLoaded', () => {
-    applyLanguage('ar');
+    const lang = localStorage.getItem('preferred_language') || 'ar';
+    applyLanguage(lang);
 });
 
 function showLanguageModal() {
@@ -107,6 +111,7 @@ function translateElement(parent, lang) {
 
 // Toggle function for header button
 function toggleLanguage() {
-    // Always stay in Arabic
-    setLanguage('ar');
+    const current = localStorage.getItem('preferred_language') || 'ar';
+    const next = current === 'ar' ? 'en' : 'ar';
+    setLanguage(next);
 }

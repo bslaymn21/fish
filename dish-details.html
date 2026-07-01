@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8" />
@@ -17,12 +17,17 @@
         rel="stylesheet" />
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script defer src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
     <!-- Shared Configuration & Styles -->
     <script src="./js/tailwind-config.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/features-popup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
 
     <!-- Translation & Theme System -->
     <script src="./js/translations.js"></script>
@@ -33,7 +38,7 @@
 <body
     class="bg-surface-bright dark:bg-slate-950 text-on-surface dark:text-slate-200 font-body-md antialiased transition-colors">
     <div id="features-badge" onclick="window.__toggleFeaturesPopup()">
-        <span class="badge-icon">✨</span>
+        <span class="badge-icon"><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">stars</span></span>
         <span class="badge-text">شاهد المميزات</span>
     </div>
     <!-- TopAppBar -->
@@ -86,7 +91,7 @@
         </div>
     </main>
 
-    <script src="./js/data.js"></script>
+    <script defer src="./js/data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const data = getMenuData();
@@ -154,34 +159,35 @@
     <!-- BottomNavBar -->
     <nav
         class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-2 pb-safe z-50 h-16 shadow-[0_-4px_12px_rgba(0,0,0,0.1)] transition-colors">
-        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full"
+        <a class="flex flex-col items-center justify-center text-[#003366] dark:text-blue-300 border-t-2 border-[#003366] dark:border-blue-300 pt-2 flex-1 h-full"
             href="index.html">
-            <span class="material-symbols-outlined">restaurant_menu</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
             <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue'] mt-1">Menu</span>
-        </a>
-        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full"
-            href="about.html">
-            <span class="material-symbols-outlined">info</span>
-            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue'] mt-1">About</span>
         </a>
         <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full"
             href="offers.html">
             <span class="material-symbols-outlined">local_offer</span>
             <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue'] mt-1">Offers</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-[#003366] dark:text-blue-300 border-t-2 border-[#003366] dark:border-blue-300 pt-2 flex-1 h-full"
-            href="order.html">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
-            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue'] mt-1">Orders</span>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full"
+            href="reservation.html">
+            <span class="material-symbols-outlined">event</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue'] mt-1">Reserve</span>
         </a>
         <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full"
-            href="#">
+            href="contact.html">
             <span class="material-symbols-outlined">location_on</span>
             <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue'] mt-1"
                 data-i18n="nav_contact">Contact</span>
         </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 pt-2 flex-1 h-full"
+            href="about.html">
+            <span class="material-symbols-outlined">info</span>
+            <span class="text-[10px] uppercase font-bold tracking-wider font-['Epilogue'] mt-1">About</span>
+        </a>
     </nav>
-<script src="./js/features-popup.js"></script>
+<script defer src="./js/features-popup.js"></script>
+<script src="js/onboarding-tour.js"></script>
 </body>
 
 </html>

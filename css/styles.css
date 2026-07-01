@@ -669,3 +669,36 @@ input[type=number] { -moz-appearance: textfield; }
 .old-price { text-decoration: line-through; color: #94a3b8; font-size: 14px; margin-left: 8px; }
 .sold-out-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 5; backdrop-filter: grayscale(1); }
 .sold-out-overlay span { background: #ef4444; color: white; padding: 8px 24px; border-radius: 30px; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ===== Tour Onboarding ===== */
+#tour-overlay { pointer-events: auto !important; }
+#tour-tooltip { isolation: isolate; }
+#tour-tooltip .tour-next-btn:active { transform: scale(0.95) !important; }
+.dark #tour-tooltip { background: #0f172a; color: #e2e8f0; box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 4px rgba(99,102,241,0.2); }
+.dark #tour-tooltip .tour-next-btn { background: #6366f1; }
+.dark #tour-tooltip div[style*="border-top"] { border-top-color: rgba(255,255,255,0.08) !important; }
+.dark #tour-tooltip div[style*="background:rgba(0,0,0"] { background: rgba(255,255,255,0.15) !important; }
+
+/* ===== Ripple Effect ===== */
+.ripple-btn { position: relative; overflow: hidden; }
+.ripple-btn::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.3) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.ripple-btn:active::after { opacity: 1; }
+
+/* ===== Hover Effects ===== */
+.hover-lift { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.25s ease; will-change: transform; }
+.hover-lift:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+.dark .hover-lift:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+
+/* ===== Entrance Animations ===== */
+.entrance-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.entrance-fade.entered { opacity: 1; transform: translateY(0); }
+.entrance-hero { opacity: 0; transform: translateY(30px) scale(0.98); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.entrance-hero.entered { opacity: 1; transform: translateY(0) scale(1); }
+
+/* ===== Smooth Scroll ===== */
+html { scroll-behavior: smooth; }
+
+/* ===== Card Glow ===== */
+.glow-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+.glow-card:hover { box-shadow: 0 8px 30px rgba(0,51,102,0.15), 0 0 0 1px rgba(0,51,102,0.08); }
+.dark .glow-card:hover { box-shadow: 0 8px 30px rgba(99,102,241,0.15), 0 0 0 1px rgba(99,102,241,0.12); }

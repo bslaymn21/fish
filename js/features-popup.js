@@ -2,25 +2,25 @@
   'use strict'
 
   const MAIN_FEATURES = [
-    { icon: '🍽️', title: 'قائمة طعام تفاعلية', desc: 'تصفح المنيو بكل سهولة مع تصنيفات ذكية وأسعار محدثة', link: 'index.html', badge: 'جديد' },
-    { icon: '🛒', title: 'سلة طلب ذكية', desc: 'أضف طلبك بضغطة وعدّل الكميات قبل الإرسال', link: 'index.html', badge: '' },
-    { icon: '🏷️', title: 'عروض حصرية', desc: 'استفد من العروض والتخفيضات المميزة يومياً', link: 'offers.html', badge: 'مشهور' },
-    { icon: '🪑', title: 'حجز طاولة', desc: 'احجز طاولتك مسبقاً واختر الوقت واليوم المناسب', link: 'reservation.html', badge: '' },
-    { icon: '🎫', title: 'كوبونات خصم', desc: 'أدخل كود الخصم واحصل على تخفيض فوري', link: 'index.html', badge: '' },
-    { icon: '💬', title: 'تواصل عبر واتساب', desc: 'أرسل طلبك مباشرة عبر واتساب بضغطة زر', link: 'index.html', badge: 'مشهور' },
-    { icon: '⭐', title: 'آراء العملاء', desc: 'شاهد تقييمات العملاء وشارك بتجربتك', link: 'about.html', badge: '' },
-    { icon: '📍', title: 'معلومات المطعم', desc: 'الموقع، ساعات العمل، وطرق التواصل', link: 'contact.html', badge: '' }
+    { icon: '<span class="mat-sym">restaurant_menu</span>', title: 'قائمة طعام تفاعلية', desc: 'تصفح المنيو بكل سهولة مع تصنيفات ذكية وأسعار محدثة', link: 'index.html', badge: 'جديد' },
+    { icon: '<span class="mat-sym">shopping_cart</span>', title: 'سلة طلب ذكية', desc: 'أضف طلبك بضغطة وعدّل الكميات قبل الإرسال', link: 'index.html', badge: '' },
+    { icon: '<span class="mat-sym">local_offer</span>', title: 'عروض حصرية', desc: 'استفد من العروض والتخفيضات المميزة يومياً', link: 'offers.html', badge: 'مشهور' },
+    { icon: '<span class="mat-sym">event_seat</span>', title: 'حجز طاولة', desc: 'احجز طاولتك مسبقاً واختر الوقت واليوم المناسب', link: 'reservation.html', badge: '' },
+    { icon: '<span class="mat-sym">confirmation_number</span>', title: 'كوبونات خصم', desc: 'أدخل كود الخصم واحصل على تخفيض فوري', link: 'index.html', badge: '' },
+    { icon: '<span class="mat-sym">chat</span>', title: 'تواصل عبر واتساب', desc: 'أرسل طلبك مباشرة عبر واتساب بضغطة زر', link: 'index.html', badge: 'مشهور' },
+    { icon: '<span class="mat-sym">star</span>', title: 'آراء العملاء', desc: 'شاهد تقييمات العملاء وشارك بتجربتك', link: 'about.html', badge: '' },
+    { icon: '<span class="mat-sym">location_on</span>', title: 'معلومات المطعم', desc: 'الموقع، ساعات العمل، وطرق التواصل', link: 'contact.html', badge: '' }
   ]
 
   const ADMIN_FEATURES = [
-    { icon: '📊', title: 'لوحة التحكم', desc: 'إحصائيات يومية وأسبوعية لأداء المطعم', link: 'admin/index.html#content-dashboard', badge: '' },
-    { icon: '📝', title: 'إدارة المنيو', desc: 'أضف، عدّل، أو احذف أصناف المنيو بسهولة', link: 'admin/index.html#content-menu', badge: 'جديد' },
-    { icon: '📦', title: 'إدارة الطلبات', desc: 'تابع الطلبات الجديدة والمنتهية', link: 'admin/index.html#content-orders', badge: '' },
-    { icon: '🎯', title: 'التحكم بالعروض', desc: 'فعّل أو أوقف العروض وحدد الخصم', link: 'admin/index.html#content-offers', badge: '' },
-    { icon: '🏷️', title: 'نظام الكوبونات', desc: 'أنشئ كوبونات خصم (نسبة أو مبلغ ثابت)', link: 'admin/index.html#content-coupons', badge: '' },
-    { icon: '📈', title: 'التقارير', desc: 'تحليل أفضل وأقل الأصناف مبيعاً برسوم بيانية', link: 'admin/index.html#content-reports', badge: '' },
-    { icon: '⚙️', title: 'الإعدادات', desc: 'رقم واتساب، العنوان، روابط التواصل', link: 'admin/index.html#content-settings', badge: '' },
-    { icon: '📱', title: 'رمز QR', desc: 'رمز QR سريع للمنيو والموقع', link: 'admin/index.html#content-qrcode', badge: '' }
+    { icon: '<span class="mat-sym">dashboard</span>', title: 'لوحة التحكم', desc: 'إحصائيات يومية وأسبوعية لأداء المطعم', link: 'admin/index.html#content-dashboard', badge: '' },
+    { icon: '<span class="mat-sym">edit_note</span>', title: 'إدارة المنيو', desc: 'أضف، عدّل، أو احذف أصناف المنيو بسهولة', link: 'admin/index.html#content-menu', badge: 'جديد' },
+    { icon: '<span class="mat-sym">inventory</span>', title: 'إدارة الطلبات', desc: 'تابع الطلبات الجديدة والمنتهية', link: 'admin/index.html#content-orders', badge: '' },
+    { icon: '<span class="mat-sym">track_changes</span>', title: 'التحكم بالعروض', desc: 'فعّل أو أوقف العروض وحدد الخصم', link: 'admin/index.html#content-offers', badge: '' },
+    { icon: '<span class="mat-sym">local_offer</span>', title: 'نظام الكوبونات', desc: 'أنشئ كوبونات خصم (نسبة أو مبلغ ثابت)', link: 'admin/index.html#content-coupons', badge: '' },
+    { icon: '<span class="mat-sym">analytics</span>', title: 'التقارير', desc: 'تحليل أفضل وأقل الأصناف مبيعاً برسوم بيانية', link: 'admin/index.html#content-reports', badge: '' },
+    { icon: '<span class="mat-sym">settings</span>', title: 'الإعدادات', desc: 'رقم واتساب، العنوان، روابط التواصل', link: 'admin/index.html#content-settings', badge: '' },
+    { icon: '<span class="mat-sym">qr_code</span>', title: 'رمز QR', desc: 'رمز QR سريع للمنيو والموقع', link: 'admin/index.html#content-qrcode', badge: '' }
   ]
 
   function isAdmin() {
@@ -64,7 +64,7 @@
           <h2>${isAdmin() ? 'مميزات لوحة التحكم' : 'مميزات المنصة'}</h2>
           <p class="subtitle">${isAdmin() ? 'كل أدوات الإدارة في مكان واحد' : 'اكتشف كل ما يقدمه مطعمكم'}</p>
         </div>
-        <button class="close-btn" onclick="window.__closeFeaturesPopup()">✕</button>
+        <button class="close-btn" onclick="window.__closeFeaturesPopup()"><span class="material-symbols-outlined" style="font-size:20px">close</span></button>
       </div>
       <div class="features-scroll">
         ${itemsHTML}
